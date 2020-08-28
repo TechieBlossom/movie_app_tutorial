@@ -31,8 +31,6 @@ That’s why, I will also teach you how to build application using Clean archite
 
 Let’s create some folders and files. First, you’ll go to terminal and run the command
 
-<iframe src="https://medium.com/media/6171fb705d3e30b5085d56e767afeebe" frameborder=0></iframe>
-
 This will create an empty Flutter project with **lib** folder.
 
 ![](https://cdn-images-1.medium.com/max/3328/1*esmoy-gRrDzrDr2f2MN_cg.png)
@@ -83,7 +81,3 @@ Here you can keep the injectors which will be used throughout the application by
 
 ### Common
 > Create **common** folder in **lib** directory.
-
-
-
-
