@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:movieapp/data/core/api_client.dart';
+import 'package:movieapp/data/data_sources/movie_remote_data_source.dart';
 
 void main() {
+  ApiClient apiClient = ApiClient(Client());
+  MovieRemoteDataSource dataSource = MovieRemoteDataSourceImpl(apiClient);
+  dataSource.getTrending();
+  dataSource.getPopular();
+  dataSource.getPlayingNow();
+  dataSource.getComingSoon();
   runApp(MyApp());
 }
 
@@ -13,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // This is the theme of your application.
         //
-        // Try running your application with "flutter run". You'll see the
+        // Try runninpackg your application with "flutter run". You'll see the
         // application has a blue toolbar. Then, without quitting the app, try
         // changing the primarySwatch below to Colors.green and then invoke
         // "hot reload" (press "r" in the console where you ran "flutter run",
