@@ -5,7 +5,7 @@
 
 Hey, Glad that you’re here.
 
-I am bringing a series of videos for you to teach you how to build an **Industry Standard Flutter Application** from scratch. I am also putting up companion articles. 
+I am bringing a series of videos and articles for you to teach you how to build an **Industry Standard Flutter Application** from scratch. I am also putting up companion articles. 
 
 In this series, you’ll learn basic as well advanced topics in Flutter. At the end of this series, you’ll have successfully built an industry standard application with **very good UI** and a **scalable code-base** with some excellent coding practices.
 
@@ -21,9 +21,7 @@ So, Let’s get started.
 
 ## What are we building?
 
-It would be too verbose here to explain each and everything in the article, it would be much easier for you to see the final outcome yourself. Please visit the video and comeback again. 
-
-**https://youtu.be/jGZuJlsXHCA**
+It would be too verbose here to explain each and everything in the article, it would be much easier for you to see the final outcome yourself. Please visit the video and comeback again. **TODO — YOUTUBE LINK(EXACT MINUTES)**
 
 ## How are we building?
 
@@ -32,6 +30,8 @@ Developing apps in Flutter gives you free hand to choose the architecture and li
 That’s why, I will also teach you how to build application using Clean architecture.
 
 Let’s create some folders and files. First, you’ll go to terminal and run the command
+
+<iframe src="https://medium.com/media/6171fb705d3e30b5085d56e767afeebe" frameborder=0></iframe>
 
 This will create an empty Flutter project with **lib** folder.
 
@@ -83,3 +83,7 @@ Here you can keep the injectors which will be used throughout the application by
 
 ### Common
 > Create **common** folder in **lib** directory.
+
+
+
+
