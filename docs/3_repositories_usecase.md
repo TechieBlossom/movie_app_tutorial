@@ -21,7 +21,7 @@ Create an abstract class `MovieRespository`
 
 ```dart
 abstract class MovieRepository {
-  Future<List<MovieEntity>>> getTrending();
+  Future<List<MovieEntity>> getTrending();
 }
 ```
 
@@ -157,7 +157,7 @@ Create a class `AppError` and extend it with `Equatable`
 
 ```dart
 class AppError extends Equatable {
-  //`
+  //1
   final String message;
 
   const AppError(this.message);
