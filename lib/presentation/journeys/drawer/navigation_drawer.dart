@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movieapp/common/constants/languages.dart';
 import 'package:movieapp/common/constants/size_constants.dart';
+import 'package:movieapp/common/constants/translation_constants.dart';
 import 'package:movieapp/common/extensions/size_extensions.dart';
+import 'package:movieapp/common/extensions/string_extensions.dart';
+import 'package:movieapp/presentation/app_localizations.dart';
+import 'package:movieapp/presentation/blocs/language/language_bloc.dart';
 import 'package:movieapp/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import 'package:movieapp/presentation/journeys/drawer/navigation_list_item.dart';
 import 'package:movieapp/presentation/widgets/logo.dart';
@@ -36,20 +42,26 @@ class NavigationDrawer extends StatelessWidget {
               ),
             ),
             NavigationListItem(
-              title: 'Favorite Movies',
+              title: TranslationConstants.favoriteMovies.t(context),
               onPressed: () {},
             ),
             NavigationExpandedListItem(
-              title: 'Language',
-              children: ['English', 'Spanish'],
+              title: TranslationConstants.language.t(context),
+              children: Languages.languages.map((e) => e.value).toList(),
+              onPressed: (index) {
+                BlocProvider.of<LanguageBloc>(context).add(
+                  ToggleLanguageEvent(
+                    Languages.languages[index],
+                  ),
+                );
+              },
+            ),
+            NavigationListItem(
+              title: TranslationConstants.feedback.t(context),
               onPressed: () {},
             ),
             NavigationListItem(
-              title: 'Feedback',
-              onPressed: () {},
-            ),
-            NavigationListItem(
-              title: 'About',
+              title: TranslationConstants.about.t(context),
               onPressed: () {},
             ),
           ],
