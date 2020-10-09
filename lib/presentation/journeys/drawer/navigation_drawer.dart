@@ -8,7 +8,6 @@ import 'package:movieapp/common/extensions/string_extensions.dart';
 import 'package:movieapp/presentation/blocs/language/language_bloc.dart';
 import 'package:movieapp/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import 'package:movieapp/presentation/journeys/drawer/navigation_list_item.dart';
-import 'package:movieapp/presentation/themes/theme_color.dart';
 import 'package:movieapp/presentation/widgets/app_dialog.dart';
 import 'package:movieapp/presentation/widgets/logo.dart';
 import 'package:wiredash/wiredash.dart';
