@@ -5,5 +5,7 @@
     "feedback": "Realimentación",
     "popular": "POPULAR",
     "now": "AHORA",
-    "soon": "PRONTO"
+    "soon": "PRONTO",
+    "okay": "Bueno",
+    "aboutDescription": "Este producto utiliza la API de TMDb pero no está respaldado ni certificado por TMDb. Esta aplicación está desarrollada con fines educativos."
 }
