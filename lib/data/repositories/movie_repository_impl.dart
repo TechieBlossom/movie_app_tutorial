@@ -21,7 +21,7 @@ class MovieRepositoryImpl extends MovieRepository {
   }
 
   @override
-  Future<Either<AppError, List<MovieEntity>>> getComingSoon() async {
+  Future<Either<AppError, List<MovieModel>>> getComingSoon() async {
     try {
       final movies = await remoteDataSource.getComingSoon();
       return Right(movies);
@@ -31,7 +31,7 @@ class MovieRepositoryImpl extends MovieRepository {
   }
 
   @override
-  Future<Either<AppError, List<MovieEntity>>> getPlayingNow() async {
+  Future<Either<AppError, List<MovieModel>>> getPlayingNow() async {
     try {
       final movies = await remoteDataSource.getPlayingNow();
       return Right(movies);
@@ -41,7 +41,7 @@ class MovieRepositoryImpl extends MovieRepository {
   }
 
   @override
-  Future<Either<AppError, List<MovieEntity>>> getPopular() async {
+  Future<Either<AppError, List<MovieModel>>> getPopular() async {
     try {
       final movies = await remoteDataSource.getPopular();
       return Right(movies);
