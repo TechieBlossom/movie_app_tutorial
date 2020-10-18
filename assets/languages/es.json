@@ -7,5 +7,9 @@
     "now": "AHORA",
     "soon": "PRONTO",
     "okay": "Bueno",
-    "aboutDescription": "Este producto utiliza la API de TMDb pero no está respaldado ni certificado por TMDb. Esta aplicación está desarrollada con fines educativos."
+    "retry": "Rever",
+    "somethingWentWrong": "Algo salió mal...",
+    "checkNetwork": "Verifique su conexión de red y presione el botón Reintentar o colóquelo como error presionando el botón Comentarios.",
+    "aboutDescription": "Este producto utiliza la API de TMDb pero no está respaldado ni certificado por TMDb. Esta aplicación está desarrollada con fines educativos.",
+    "noMovies": "Lo siento, no hay películas en esta sección."
 }
