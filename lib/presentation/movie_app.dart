@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:movieapp/common/constants/languages.dart';
-import 'package:movieapp/common/screenutil/screenutil.dart';
-import 'package:movieapp/di/get_it.dart';
-import 'package:movieapp/presentation/app_localizations.dart';
-import 'package:movieapp/presentation/blocs/language/language_bloc.dart';
-import 'package:movieapp/presentation/wiredash_app.dart';
 
+import '../common/constants/languages.dart';
+import '../common/screenutil/screenutil.dart';
+import '../di/get_it.dart';
+import 'app_localizations.dart';
+import 'blocs/language/language_bloc.dart';
 import 'journeys/home/home_screen.dart';
 import 'themes/theme_color.dart';
 import 'themes/theme_text.dart';
+import 'wiredash_app.dart';
 
 class MovieApp extends StatefulWidget {
   @override
