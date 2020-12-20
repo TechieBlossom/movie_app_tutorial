@@ -14,4 +14,6 @@ class TranslationConstants {
   static const String now = 'now';
   static const String soon = 'soon';
   static const String noMovies = 'noMovies';
+  static const String cast = 'cast';
+  static const String watchTrailers = 'watchTrailers';
 }
