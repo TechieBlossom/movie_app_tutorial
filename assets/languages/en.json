@@ -13,5 +13,6 @@
     "aboutDescription": "This product uses the TMDb API but is not endorsed or certified by TMDb. This app is developed for education purpose.",
     "noMovies": "Sorry, no movies under this section",
     "cast": "Cast",
-    "watchTrailers": "Watch Trailers"
+    "watchTrailers": "Watch Trailers",
+    "noMoviesSearched": "No movies found, please search with another word"
 }

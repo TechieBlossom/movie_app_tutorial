@@ -3,12 +3,14 @@ import 'package:http/http.dart';
 import 'package:movieapp/domain/usecases/get_cast.dart';
 import 'package:movieapp/domain/usecases/get_movie_detail.dart';
 import 'package:movieapp/domain/usecases/get_videos.dart';
+import 'package:movieapp/domain/usecases/search_movies.dart';
 import 'package:movieapp/presentation/blocs/cast/cast_bloc.dart';
 import 'package:movieapp/presentation/blocs/language/language_bloc.dart';
 import 'package:movieapp/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:movieapp/presentation/blocs/movie_carousel/movie_carousel_bloc.dart';
 import 'package:movieapp/presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:movieapp/presentation/blocs/movie_tabbed/movie_tabbed_bloc.dart';
+import 'package:movieapp/presentation/blocs/search_movie/search_movie_bloc.dart';
 import 'package:movieapp/presentation/blocs/videos/videos_bloc.dart';
 
 import '../data/core/api_client.dart';
@@ -44,6 +46,9 @@ Future init() async {
       () => GetMovieDetail(getItInstance()));
 
   getItInstance.registerLazySingleton<GetCast>(() => GetCast(getItInstance()));
+
+  getItInstance
+      .registerLazySingleton<SearchMovies>(() => SearchMovies(getItInstance()));
 
   getItInstance
       .registerLazySingleton<GetVideos>(() => GetVideos(getItInstance()));
@@ -85,6 +90,12 @@ Future init() async {
   getItInstance.registerFactory(
     () => VideosBloc(
       getVideos: getItInstance(),
+    ),
+  );
+
+  getItInstance.registerFactory(
+    () => SearchMovieBloc(
+      searchMovies: getItInstance(),
     ),
   );
 
