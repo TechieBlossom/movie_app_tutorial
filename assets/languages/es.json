@@ -13,5 +13,6 @@
     "aboutDescription": "Este producto utiliza la API de TMDb pero no está respaldado ni certificado por TMDb. Esta aplicación está desarrollada con fines educativos.",
     "noMovies": "Lo siento, no hay películas en esta sección.",
     "cast": "Emitir",
-    "watchTrailers": "Ver trailers"
+    "watchTrailers": "Ver trailers",
+    "noMoviesSearched": "No se encontraron películas, busque con otra palabra"
 }
