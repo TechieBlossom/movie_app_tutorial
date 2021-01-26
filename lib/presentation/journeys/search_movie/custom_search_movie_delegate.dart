@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movieapp/common/constants/size_constants.dart';
 import 'package:movieapp/common/constants/translation_constants.dart';
 import 'package:movieapp/common/extensions/string_extensions.dart';
-import 'package:movieapp/domain/entities/app_error.dart';
 import 'package:movieapp/presentation/blocs/search_movie/search_movie_bloc.dart';
 import 'package:movieapp/presentation/journeys/search_movie/search_movie_card.dart';
 import 'package:movieapp/presentation/themes/theme_color.dart';
