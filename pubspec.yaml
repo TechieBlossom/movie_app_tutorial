@@ -37,11 +37,15 @@ dependencies:
   flutter_svg: ^0.18.0
   cached_network_image: ^2.2.0+1
   wiredash: ^0.2.0
+  hive: ^1.4.1+1
+  path_provider: ^1.6.11
   youtube_player_flutter: ^7.0.0+6
   flutter_localizations:
     sdk: flutter
 
 dev_dependencies:
+  hive_generator: 0.7.2
+  build_runner: ^1.10.0
   flutter_test:
     sdk: flutter
 
