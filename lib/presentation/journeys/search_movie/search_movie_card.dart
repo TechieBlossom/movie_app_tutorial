@@ -7,7 +7,6 @@ import 'package:movieapp/common/extensions/size_extensions.dart';
 import 'package:movieapp/presentation/themes/theme_text.dart';
 import 'package:movieapp/domain/entities/movie_entity.dart';
 import 'package:movieapp/presentation/journeys/movie_detail/movie_detail_arguments.dart';
-import 'package:movieapp/presentation/journeys/movie_detail/movie_detail_screen.dart';
 
 class SearchMovieCard extends StatelessWidget {
   final MovieEntity movie;

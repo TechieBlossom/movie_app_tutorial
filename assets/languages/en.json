@@ -15,5 +15,15 @@
     "cast": "Cast",
     "watchTrailers": "Watch Trailers",
     "noMoviesSearched": "No movies found, please search with another word",
-    "noFavoriteMovie": "No Favorite Movie"
+    "noFavoriteMovie": "No Favorite Movie",
+    "loginToMovieApp": "Login to Movie App via TMDb",
+    "username": "Username",
+    "password": "Password",
+    "signIn": "Sign In",
+    "logout": "Log out",
+    "wrongUsernamePassword": "Username or email id is invalid",
+    "noNetwork": "No network connection",
+    "sessionDenied": "Session denied",
+    "enterTMDbUsername": "Enter TMDb username here...",
+    "enterPassword": "Enter password here..."
 }
