@@ -4,7 +4,6 @@ import 'package:movieapp/common/constants/route_constants.dart';
 import 'package:movieapp/common/constants/translation_constants.dart';
 import 'package:movieapp/presentation/blocs/videos/videos_bloc.dart';
 import 'package:movieapp/presentation/journeys/watch_video/watch_video_arguments.dart';
-import 'package:movieapp/presentation/journeys/watch_video/watch_video_screen.dart';
 import 'package:movieapp/presentation/widgets/button.dart';
 
 class VideosWidget extends StatelessWidget {
