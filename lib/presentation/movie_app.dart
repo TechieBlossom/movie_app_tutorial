@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:movieapp/common/constants/route_constants.dart';
+import 'package:movieapp/presentation/blocs/loading/loading_bloc.dart';
 import 'package:movieapp/presentation/blocs/login/login_bloc.dart';
+import 'package:movieapp/presentation/journeys/loading/loading_screen.dart';
 import 'package:movieapp/presentation/routes.dart';
 
 import '../common/constants/languages.dart';
@@ -24,6 +26,7 @@ class _MovieAppState extends State<MovieApp> {
   final _navigatorKey = GlobalKey<NavigatorState>();
   LanguageBloc _languageBloc;
   LoginBloc _loginBloc;
+  LoadingBloc _loadingBloc;
 
   @override
   void initState() {
@@ -31,12 +34,14 @@ class _MovieAppState extends State<MovieApp> {
     _languageBloc = getItInstance<LanguageBloc>();
     _languageBloc.add(LoadPreferredLanguageEvent());
     _loginBloc = getItInstance<LoginBloc>();
+    _loadingBloc = getItInstance<LoadingBloc>();
   }
 
   @override
   void dispose() {
     _languageBloc?.close();
     _loginBloc?.close();
+    _loadingBloc?.close();
     super.dispose();
   }
 
@@ -50,6 +55,9 @@ class _MovieAppState extends State<MovieApp> {
         ),
         BlocProvider<LoginBloc>.value(
           value: _loginBloc,
+        ),
+        BlocProvider<LoadingBloc>.value(
+          value: _loadingBloc,
         ),
       ],
       child: BlocBuilder<LanguageBloc, LanguageState>(
@@ -80,7 +88,9 @@ class _MovieAppState extends State<MovieApp> {
                   GlobalWidgetsLocalizations.delegate,
                 ],
                 builder: (context, child) {
-                  return child;
+                  return LoadingScreen(
+                    screen: child,
+                  );
                 },
                 initialRoute: RouteList.initial,
                 onGenerateRoute: (RouteSettings settings) {
