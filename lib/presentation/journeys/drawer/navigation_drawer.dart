@@ -6,8 +6,8 @@ import 'package:movieapp/common/constants/size_constants.dart';
 import 'package:movieapp/common/constants/translation_constants.dart';
 import 'package:movieapp/common/extensions/size_extensions.dart';
 import 'package:movieapp/common/extensions/string_extensions.dart';
-import 'package:movieapp/presentation/blocs/language/language_bloc.dart';
-import 'package:movieapp/presentation/blocs/login/login_bloc.dart';
+import 'package:movieapp/presentation/blocs/language/language_cubit.dart';
+import 'package:movieapp/presentation/blocs/login/login_cubit.dart';
 import 'package:movieapp/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import 'package:movieapp/presentation/journeys/drawer/navigation_list_item.dart';
 import 'package:movieapp/presentation/widgets/app_dialog.dart';
@@ -54,10 +54,8 @@ class NavigationDrawer extends StatelessWidget {
               title: TranslationConstants.language.t(context),
               children: Languages.languages.map((e) => e.value).toList(),
               onPressed: (index) {
-                BlocProvider.of<LanguageBloc>(context).add(
-                  ToggleLanguageEvent(
-                    Languages.languages[index],
-                  ),
+                BlocProvider.of<LanguageCubit>(context).toggleLanguage(
+                  Languages.languages[index],
                 );
               },
             ),
@@ -75,7 +73,7 @@ class NavigationDrawer extends StatelessWidget {
                 _showDialog(context);
               },
             ),
-            BlocListener<LoginBloc, LoginState>(
+            BlocListener<LoginCubit, LoginState>(
               listenWhen: (previous, current) => current is LogoutSuccess,
               listener: (context, state) {
                 Navigator.of(context).pushNamedAndRemoveUntil(
@@ -84,7 +82,7 @@ class NavigationDrawer extends StatelessWidget {
               child: NavigationListItem(
                 title: TranslationConstants.logout.t(context),
                 onPressed: () {
-                  BlocProvider.of<LoginBloc>(context).add(LogoutEvent());
+                  BlocProvider.of<LoginCubit>(context).logout();
                 },
               ),
             ),
