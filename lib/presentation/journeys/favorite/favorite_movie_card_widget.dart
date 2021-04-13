@@ -6,7 +6,7 @@ import 'package:movieapp/common/constants/size_constants.dart';
 import 'package:movieapp/common/extensions/size_extensions.dart';
 import 'package:movieapp/data/core/api_constants.dart';
 import 'package:movieapp/domain/entities/movie_entity.dart';
-import 'package:movieapp/presentation/blocs/favorite/favorite_bloc.dart';
+import 'package:movieapp/presentation/blocs/favorite/favorite_cubit.dart';
 import 'package:movieapp/presentation/journeys/movie_detail/movie_detail_arguments.dart';
 
 class FavoriteMovieCardWidget extends StatelessWidget {
@@ -43,8 +43,8 @@ class FavoriteMovieCardWidget extends StatelessWidget {
               Align(
                 alignment: Alignment.topRight,
                 child: GestureDetector(
-                  onTap: () => BlocProvider.of<FavoriteBloc>(context)
-                      .add(DeleteFavoriteMovieEvent(movie.id)),
+                  onTap: () => context.read<FavoriteCubit>()
+                      .deleteMovie(movie.id),
                   child: Padding(
                     padding: EdgeInsets.all(Sizes.dimen_12.w),
                     child: Icon(

@@ -1,4 +1,4 @@
-part of 'movie_carousel_bloc.dart';
+part of 'movie_carousel_cubit.dart';
 
 abstract class MovieCarouselState extends Equatable {
   const MovieCarouselState();
