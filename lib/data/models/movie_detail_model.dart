@@ -138,7 +138,7 @@ class MovieDetailModel extends MovieDetailEntity {
 
 _genres(Map<String, dynamic> json) {
   if (json['genres'] != null) {
-    final genres = new List<Genres>();
+    final genres = List.empty();
     json['genres'].forEach((v) {
       genres.add(new Genres.fromJson(v));
     });

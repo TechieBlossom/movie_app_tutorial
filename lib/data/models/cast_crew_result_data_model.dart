@@ -10,13 +10,13 @@ class CastCrewResultModel {
   CastCrewResultModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     if (json['cast'] != null) {
-      cast = new List<CastModel>();
+      cast = List.empty();
       json['cast'].forEach((v) {
         cast.add(new CastModel.fromJson(v));
       });
     }
     if (json['crew'] != null) {
-      crew = new List<Crew>();
+      crew = List.empty();
       json['crew'].forEach((v) {
         crew.add(new Crew.fromJson(v));
       });
