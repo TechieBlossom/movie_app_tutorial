@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:movieapp/common/constants/languages.dart';
+import '../common/constants/languages.dart';
 
 class AppLocalizations {
   final Locale locale;

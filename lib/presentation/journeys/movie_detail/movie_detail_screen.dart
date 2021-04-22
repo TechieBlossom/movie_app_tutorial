@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/common/constants/size_constants.dart';
-import 'package:movieapp/common/constants/translation_constants.dart';
-import 'package:movieapp/common/extensions/size_extensions.dart';
-import 'package:movieapp/common/extensions/string_extensions.dart';
-import 'package:movieapp/di/get_it.dart';
-import 'package:movieapp/presentation/blocs/cast/cast_cubit.dart';
-import 'package:movieapp/presentation/blocs/favorite/favorite_cubit.dart';
-import 'package:movieapp/presentation/blocs/movie_detail/movie_detail_cubit.dart';
-import 'package:movieapp/presentation/blocs/videos/videos_cubit.dart';
-import 'package:movieapp/presentation/journeys/movie_detail/big_poster.dart';
-import 'package:movieapp/presentation/journeys/movie_detail/movie_detail_arguments.dart';
-import 'package:movieapp/presentation/journeys/movie_detail/videos_widget.dart';
 
+import '../../../common/constants/size_constants.dart';
+import '../../../common/constants/translation_constants.dart';
+import '../../../common/extensions/size_extensions.dart';
+import '../../../common/extensions/string_extensions.dart';
+import '../../../di/get_it.dart';
+import '../../blocs/cast/cast_cubit.dart';
+import '../../blocs/favorite/favorite_cubit.dart';
+import '../../blocs/movie_detail/movie_detail_cubit.dart';
+import '../../blocs/videos/videos_cubit.dart';
+import 'big_poster.dart';
 import 'cast_widget.dart';
+import 'movie_detail_arguments.dart';
+import 'videos_widget.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   final MovieDetailArguments movieDetailArguments;

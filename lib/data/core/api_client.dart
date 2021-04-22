@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:movieapp/data/core/unathorised_exception.dart';
 
 import 'api_constants.dart';
+import 'unathorised_exception.dart';
 
 class ApiClient {
   final Client _client;
@@ -17,7 +17,6 @@ class ApiClient {
         'Content-Type': 'application/json',
       },
     );
-
 
     if (response.statusCode == 200) {
       return json.decode(response.body);

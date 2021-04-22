@@ -2,12 +2,13 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/domain/entities/app_error.dart';
-import 'package:movieapp/domain/entities/movie_entity.dart';
-import 'package:movieapp/domain/entities/no_params.dart';
-import 'package:movieapp/domain/usecases/get_trending.dart';
-import 'package:movieapp/presentation/blocs/loading/loading_cubit.dart';
-import 'package:movieapp/presentation/blocs/movie_backdrop/movie_backdrop_cubit.dart';
+
+import '../../../domain/entities/app_error.dart';
+import '../../../domain/entities/movie_entity.dart';
+import '../../../domain/entities/no_params.dart';
+import '../../../domain/usecases/get_trending.dart';
+import '../loading/loading_cubit.dart';
+import '../movie_backdrop/movie_backdrop_cubit.dart';
 
 part 'movie_carousel_state.dart';
 

@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
-import 'package:movieapp/domain/entities/movie_entity.dart';
+
+import '../../domain/entities/movie_entity.dart';
 
 part 'movie_table.g.dart';
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../common/extensions/size_extensions.dart';
 
 class Logo extends StatelessWidget {
@@ -15,6 +16,7 @@ class Logo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       'assets/pngs/logo.png',
+      key: const ValueKey('logo_image_key'),
       color: Colors.white,
       height: height.h,
     );

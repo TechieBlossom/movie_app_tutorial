@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:movieapp/common/constants/size_constants.dart';
-import 'package:movieapp/common/constants/translation_constants.dart';
-import 'package:movieapp/common/extensions/size_extensions.dart';
-import 'package:movieapp/common/extensions/string_extensions.dart';
-import 'package:movieapp/domain/entities/app_error.dart';
 import 'package:wiredash/wiredash.dart';
 
+import '../../common/constants/size_constants.dart';
+import '../../common/constants/translation_constants.dart';
+import '../../common/extensions/size_extensions.dart';
+import '../../common/extensions/string_extensions.dart';
+import '../../domain/entities/app_error.dart';
 import 'button.dart';
 
 class AppErrorWidget extends StatelessWidget {

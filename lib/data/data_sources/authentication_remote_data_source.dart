@@ -1,5 +1,5 @@
-import 'package:movieapp/data/core/api_client.dart';
-import 'package:movieapp/data/models/request_token_model.dart';
+import '../core/api_client.dart';
+import '../models/request_token_model.dart';
 
 abstract class AuthenticationRemoteDataSource {
   Future<RequestTokenModel> getRequestToken();

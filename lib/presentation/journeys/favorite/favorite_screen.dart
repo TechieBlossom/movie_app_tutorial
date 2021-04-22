@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/common/constants/translation_constants.dart';
-import 'package:movieapp/common/extensions/string_extensions.dart';
-import 'package:movieapp/di/get_it.dart';
-import 'package:movieapp/presentation/blocs/favorite/favorite_cubit.dart';
 
+import '../../../common/constants/translation_constants.dart';
+import '../../../common/extensions/string_extensions.dart';
+import '../../../di/get_it.dart';
+import '../../blocs/favorite/favorite_cubit.dart';
 import 'favorite_movie_grid_view.dart';
 
 class FavoriteScreen extends StatefulWidget {

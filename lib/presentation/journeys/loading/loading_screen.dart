@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/common/constants/size_constants.dart';
-import 'package:movieapp/presentation/blocs/loading/loading_cubit.dart';
-import 'package:movieapp/presentation/journeys/loading/loading_circle.dart';
-import 'package:movieapp/common/extensions/size_extensions.dart';
-import 'package:movieapp/presentation/themes/theme_color.dart';
+
+import '../../../common/constants/size_constants.dart';
+import '../../../common/extensions/size_extensions.dart';
+import '../../blocs/loading/loading_cubit.dart';
+import '../../themes/theme_color.dart';
+import 'loading_circle.dart';
 
 class LoadingScreen extends StatelessWidget {
   final Widget screen;

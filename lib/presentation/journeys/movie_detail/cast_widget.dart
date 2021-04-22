@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/common/constants/size_constants.dart';
-import 'package:movieapp/common/extensions/size_extensions.dart';
-import 'package:movieapp/data/core/api_constants.dart';
-import 'package:movieapp/presentation/blocs/cast/cast_cubit.dart';
-import 'package:movieapp/presentation/themes/theme_text.dart';
+
+import '../../../common/constants/size_constants.dart';
+import '../../../common/extensions/size_extensions.dart';
+import '../../../data/core/api_constants.dart';
+import '../../blocs/cast/cast_cubit.dart';
+import '../../themes/theme_text.dart';
 
 class CastWidget extends StatelessWidget {
   @override

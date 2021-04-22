@@ -1,4 +1,4 @@
-import 'package:movieapp/common/screenutil/screenutil.dart';
+import '../screenutil/screenutil.dart';
 
 extension SizeExtension on num {
   num get w => ScreenUtil().setWidth(this);

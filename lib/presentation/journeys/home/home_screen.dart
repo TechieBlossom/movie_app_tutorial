@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/di/get_it.dart';
-import 'package:movieapp/presentation/blocs/movie_backdrop/movie_backdrop_cubit.dart';
-import 'package:movieapp/presentation/blocs/movie_carousel/movie_carousel_cubit.dart';
-import 'package:movieapp/presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
-import 'package:movieapp/presentation/blocs/search_movie/search_movie_cubit.dart';
-import 'package:movieapp/presentation/journeys/drawer/navigation_drawer.dart';
 
+import '../../../di/get_it.dart';
+import '../../blocs/movie_backdrop/movie_backdrop_cubit.dart';
+import '../../blocs/movie_carousel/movie_carousel_cubit.dart';
+import '../../blocs/movie_tabbed/movie_tabbed_cubit.dart';
+import '../../blocs/search_movie/search_movie_cubit.dart';
 import '../../widgets/app_error_widget.dart';
+import '../drawer/navigation_drawer.dart';
 import 'movie_carousel/movie_carousel_widget.dart';
 import 'movie_tabbed/movie_tabbed_widget.dart';
 

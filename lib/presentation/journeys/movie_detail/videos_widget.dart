@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/common/constants/route_constants.dart';
-import 'package:movieapp/common/constants/translation_constants.dart';
-import 'package:movieapp/presentation/blocs/videos/videos_cubit.dart';
-import 'package:movieapp/presentation/journeys/watch_video/watch_video_arguments.dart';
-import 'package:movieapp/presentation/widgets/button.dart';
+
+import '../../../common/constants/route_constants.dart';
+import '../../../common/constants/translation_constants.dart';
+import '../../blocs/videos/videos_cubit.dart';
+import '../../widgets/button.dart';
+import '../watch_video/watch_video_arguments.dart';
 
 class VideosWidget extends StatelessWidget {
   final VideosCubit videosCubit;

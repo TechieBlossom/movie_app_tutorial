@@ -3,12 +3,13 @@ import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/common/constants/size_constants.dart';
-import 'package:movieapp/common/screenutil/screenutil.dart';
-import 'package:movieapp/common/extensions/size_extensions.dart';
-import 'package:movieapp/data/core/api_constants.dart';
-import 'package:movieapp/domain/entities/movie_entity.dart';
-import 'package:movieapp/presentation/blocs/movie_backdrop/movie_backdrop_cubit.dart';
+
+import '../../../../common/constants/size_constants.dart';
+import '../../../../common/extensions/size_extensions.dart';
+import '../../../../common/screenutil/screenutil.dart';
+import '../../../../data/core/api_constants.dart';
+import '../../../../domain/entities/movie_entity.dart';
+import '../../../blocs/movie_backdrop/movie_backdrop_cubit.dart';
 
 class MovieBackdropWidget extends StatelessWidget {
   @override

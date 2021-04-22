@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movieapp/common/constants/size_constants.dart';
-import 'package:movieapp/presentation/themes/theme_text.dart';
-import 'package:movieapp/common/extensions/size_extensions.dart';
+import '../../../common/constants/size_constants.dart';
+import '../../themes/theme_text.dart';
+import '../../../common/extensions/size_extensions.dart';
 
 class LabelFieldWidget extends StatelessWidget {
+  final Key textFieldKey;
   final String label;
   final String hintText;
   final bool isPasswordField;
@@ -26,6 +27,7 @@ class LabelFieldWidget extends StatelessWidget {
     @required this.hintText,
     @required this.controller,
     this.isPasswordField = false,
+    this.textFieldKey,
   }) : super(key: key);
 
   @override
@@ -41,6 +43,7 @@ class LabelFieldWidget extends StatelessWidget {
             textAlign: TextAlign.start,
           ),
           TextField(
+            key: textFieldKey,
             obscureText: isPasswordField,
             obscuringCharacter: '*',
             controller: controller,

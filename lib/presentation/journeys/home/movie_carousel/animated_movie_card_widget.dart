@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movieapp/common/constants/size_constants.dart';
-import 'package:movieapp/common/extensions/size_extensions.dart';
-import 'package:movieapp/common/screenutil/screenutil.dart';
 
+import '../../../../common/constants/size_constants.dart';
+import '../../../../common/extensions/size_extensions.dart';
+import '../../../../common/screenutil/screenutil.dart';
 import 'movie_card_widget.dart';
 
 class AnimatedMovieCardWidget extends StatelessWidget {
