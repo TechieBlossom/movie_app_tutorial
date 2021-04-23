@@ -70,49 +70,29 @@ main() {
     );
   }
 
-  group(('Login Form Test'), () {
+  group(('Login Form Test 2'), () {
     final Finder usernameFieldFinder =
         find.byKey(ValueKey('username_text_field_key'));
     final Finder passwordFieldFinder =
         find.byKey(ValueKey('password_text_field_key'));
     final Finder signInButtonFinder = find.byType(TextButton);
 
-    Future<Null> _verifyBasic() async {
-      expect(usernameFieldFinder, findsOneWidget);
-      expect(passwordFieldFinder, findsOneWidget);
-      expect(signInButtonFinder, findsOneWidget);
-    }
-
-    testWidgets(
-        'should show error message when sign in API call with username, password is made',
-        (WidgetTester tester) async {
-      when(_loginCubitMock.state)
-          .thenAnswer((_) => LoginError(TranslationConstants.sessionDenied));
-
-      await tester.pumpWidget(getWidget());
-      await tester.pumpAndSettle();
-
-      await _verifyBasic();
-
-      await tester.enterText(usernameFieldFinder, 'username');
-      await tester.enterText(passwordFieldFinder, 'password');
-      await tester.pumpAndSettle();
-
-      await tester.tap(signInButtonFinder);
-      await tester.pumpAndSettle();
-
-      expect(find.text('Session denied'), findsOneWidget);
-
-      verify(_loginCubitMock.initiateLogin(any, any)).called(1);
-    });
+    // Future<Null> _verifyBasic() async {
+    //   expect(usernameFieldFinder, findsOneWidget);
+    //   expect(passwordFieldFinder, findsOneWidget);
+    //   expect(signInButtonFinder, findsOneWidget);
+    // }
 
     // testWidgets(
-    //     'should show success message when sign in API call with username, password is made',
+    //     'should show error message when sign in API call with username, password is made',
     //     (WidgetTester tester) async {
-    //   when(_loginCubitMock.state).thenAnswer((_) => LoginSuccess());
+    //   when(_loginCubitMock.state)
+    //       .thenAnswer((_) => LoginError(TranslationConstants.sessionDenied));
 
     //   await tester.pumpWidget(getWidget());
     //   await tester.pumpAndSettle();
+
+    //   await _verifyBasic();
 
     //   await tester.enterText(usernameFieldFinder, 'username');
     //   await tester.enterText(passwordFieldFinder, 'password');
@@ -121,10 +101,30 @@ main() {
     //   await tester.tap(signInButtonFinder);
     //   await tester.pumpAndSettle();
 
-    //   expect(find.text('Session denied'), findsNothing);
+    //   expect(find.text('Session denied'), findsOneWidget);
 
     //   verify(_loginCubitMock.initiateLogin(any, any)).called(1);
-    //   verify(_mockObserver.didPush(any, any));
     // });
+
+    testWidgets(
+        'should show success message when sign in API call with username, password is made',
+        (WidgetTester tester) async {
+      when(_loginCubitMock.state).thenAnswer((_) => LoginSuccess());
+
+      await tester.pumpWidget(getWidget());
+      await tester.pumpAndSettle();
+
+      await tester.enterText(usernameFieldFinder, 'username');
+      await tester.enterText(passwordFieldFinder, 'password');
+      await tester.pumpAndSettle();
+
+      await tester.tap(signInButtonFinder);
+      await tester.pumpAndSettle();
+
+      expect(find.text('Session denied'), findsNothing);
+
+      verify(_loginCubitMock.initiateLogin(any, any)).called(1);
+      verify(_mockObserver.didPush(any, any));
+    });
   });
 }

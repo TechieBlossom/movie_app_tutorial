@@ -14,15 +14,6 @@ materialWrapperWithBlocs(
   return MultiBlocProvider(
     providers: blocProviders,
     child: MaterialApp(
-      // theme: ThemeData(
-      //   unselectedWidgetColor: AppColor.royalBlue,
-      //   primaryColor: AppColor.vulcan,
-      //   accentColor: AppColor.royalBlue,
-      //   scaffoldBackgroundColor: AppColor.vulcan,
-      //   visualDensity: VisualDensity.adaptivePlatformDensity,
-      //   textTheme: ThemeText.getTextTheme(),
-      //   appBarTheme: const AppBarTheme(elevation: 0),
-      // ),
       locale: Locale(Languages.languages[0].code),
       supportedLocales: Languages.languages.map((e) => Locale(e.code)).toList(),
       localizationsDelegates: [
