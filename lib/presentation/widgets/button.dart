@@ -34,7 +34,7 @@ class Button extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: Sizes.dimen_16.w),
       margin: EdgeInsets.symmetric(vertical: Sizes.dimen_10.h),
       height: Sizes.dimen_16.h,
-      child: FlatButton(
+      child: TextButton(
         onPressed: isEnabled ? onPressed : null,
         child: Text(
           text.t(context),
