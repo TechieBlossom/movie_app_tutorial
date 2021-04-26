@@ -4,15 +4,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movieapp/common/constants/languages.dart';
-import 'package:movieapp/common/constants/translation_constants.dart';
 import 'package:movieapp/common/screenutil/screenutil.dart';
 import 'package:movieapp/presentation/app_localizations.dart';
 import 'package:movieapp/presentation/blocs/language/language_cubit.dart';
 import 'package:movieapp/presentation/blocs/loading/loading_cubit.dart';
 import 'package:movieapp/presentation/blocs/login/login_cubit.dart';
 import 'package:movieapp/presentation/journeys/login/login_form.dart';
-import 'package:movieapp/presentation/journeys/login/login_screen.dart';
-import 'package:movieapp/presentation/widgets/logo.dart';
 
 class LanguageCubitMock extends Mock implements LanguageCubit {}
 

@@ -9,7 +9,7 @@ class VideoResultModel {
   VideoResultModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     if (json['results'] != null) {
-      videos = List.empty(growable: true);
+      videos = List<VideoModel>.empty(growable: true);
       json['results'].forEach((v) {
         videos.add(new VideoModel.fromJson(v));
       });
