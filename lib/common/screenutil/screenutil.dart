@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 class ScreenUtil {
-  static ScreenUtil _instance;
+  static late ScreenUtil? _instance;
   static const int defaultWidth = 414;
   static const int defaultHeight = 896;
 
@@ -12,12 +12,12 @@ class ScreenUtil {
   /// allowFontScaling Specifies whether fonts should scale to respect Text Size accessibility settings. The default is false.
   bool allowFontScaling;
 
-  static double _screenWidth;
-  static double _screenHeight;
-  static double _pixelRatio;
-  static double _statusBarHeight;
-  static double _bottomBarHeight;
-  static double _textScaleFactor;
+  static late double _screenWidth;
+  static late double _screenHeight;
+  static late double _pixelRatio;
+  static late double _statusBarHeight;
+  static late double _bottomBarHeight;
+  static late double _textScaleFactor;
 
   ScreenUtil._();
 
