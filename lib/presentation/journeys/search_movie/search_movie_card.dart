@@ -14,7 +14,7 @@ class SearchMovieCard extends StatelessWidget {
 
   const SearchMovieCard({
     Key? key,
-    @required this.movie,
+    required this.movie,
   }) : super(key: key);
 
   @override
