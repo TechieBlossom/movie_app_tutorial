@@ -7,9 +7,8 @@ class Logo extends StatelessWidget {
 
   const Logo({
     Key? key,
-    @required this.height,
-  })  : assert(height != null, 'height must not be null'),
-        assert(height > 0, 'height should be greater than 0'),
+    required this.height,
+  })   : assert(height > 0, 'height should be greater than 0'),
         super(key: key);
 
   @override
