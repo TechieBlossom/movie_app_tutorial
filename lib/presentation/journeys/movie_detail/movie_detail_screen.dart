@@ -19,7 +19,7 @@ class MovieDetailScreen extends StatefulWidget {
   final MovieDetailArguments movieDetailArguments;
 
   const MovieDetailScreen({
-    Key key,
+    Key? key,
     @required this.movieDetailArguments,
   })  : assert(movieDetailArguments != null, 'arguments must not be null'),
         super(key: key);

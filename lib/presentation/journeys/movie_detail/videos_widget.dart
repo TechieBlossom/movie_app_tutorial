@@ -11,7 +11,7 @@ class VideosWidget extends StatelessWidget {
   final VideosCubit videosCubit;
 
   const VideosWidget({
-    Key key,
+    Key? key,
     this.videosCubit,
   }) : super(key: key);
 

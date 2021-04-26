@@ -12,7 +12,7 @@ class AppDialog extends StatelessWidget {
   final Widget image;
 
   const AppDialog({
-    Key key,
+    Key? key,
     @required this.title,
     @required this.description,
     @required this.buttonText,

@@ -13,7 +13,7 @@ class AppErrorWidget extends StatelessWidget {
   final Function onPressed;
 
   const AppErrorWidget({
-    Key key,
+    Key? key,
     @required this.errorType,
     @required this.onPressed,
   }) : super(key: key);

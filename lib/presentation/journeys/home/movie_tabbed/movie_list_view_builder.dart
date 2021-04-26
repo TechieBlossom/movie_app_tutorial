@@ -8,7 +8,7 @@ class MovieListViewBuilder extends StatelessWidget {
   //1
   final List<MovieEntity> movies;
 
-  const MovieListViewBuilder({Key key, @required this.movies})
+  const MovieListViewBuilder({Key? key, @required this.movies})
       : super(key: key);
 
   @override

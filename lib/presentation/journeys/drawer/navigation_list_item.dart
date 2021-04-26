@@ -8,7 +8,7 @@ class NavigationListItem extends StatelessWidget {
   final Function onPressed;
 
   const NavigationListItem({
-    Key key,
+    Key? key,
     @required this.title,
     @required this.onPressed,
   }) : super(key: key);
@@ -42,7 +42,7 @@ class NavigationSubListItem extends StatelessWidget {
   final Function onPressed;
 
   const NavigationSubListItem({
-    Key key,
+    Key? key,
     @required this.title,
     @required this.onPressed,
   }) : super(key: key);

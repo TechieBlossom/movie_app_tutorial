@@ -8,7 +8,7 @@ class NavigationExpandedListItem extends StatelessWidget {
   final List<String> children;
 
   const NavigationExpandedListItem({
-    Key key,
+    Key? key,
     @required this.title,
     @required this.onPressed,
     @required this.children,

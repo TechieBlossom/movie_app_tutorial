@@ -12,7 +12,7 @@ class TabTitleWidget extends StatelessWidget {
   final bool isSelected;
 
   const TabTitleWidget({
-    Key key,
+    Key? key,
     @required this.title,
     @required this.onTap,
     this.isSelected = false,

@@ -9,7 +9,7 @@ class WiredashApp extends StatelessWidget {
   final String languageCode;
 
   const WiredashApp({
-    Key key,
+    Key? key,
     @required this.navigatorKey,
     @required this.child,
     @required this.languageCode,

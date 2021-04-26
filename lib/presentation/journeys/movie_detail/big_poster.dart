@@ -14,7 +14,7 @@ class BigPoster extends StatelessWidget {
   final MovieDetailEntity movie;
 
   const BigPoster({
-    Key key,
+    Key? key,
     @required this.movie,
   }) : super(key: key);
 

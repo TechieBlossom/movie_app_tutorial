@@ -12,7 +12,7 @@ class AnimatedMovieCardWidget extends StatelessWidget {
   final PageController pageController;
 
   const AnimatedMovieCardWidget({
-    Key key,
+    Key? key,
     @required this.index,
     @required this.movieId,
     @required this.posterPath,

@@ -23,7 +23,7 @@ class LabelFieldWidget extends StatelessWidget {
   );
 
   const LabelFieldWidget({
-    Key key,
+    Key? key,
     @required this.label,
     @required this.hintText,
     @required this.controller,

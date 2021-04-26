@@ -13,7 +13,7 @@ class WatchVideoScreen extends StatefulWidget {
   final WatchVideoArguments watchVideoArguments;
 
   const WatchVideoScreen({
-    Key key,
+    Key? key,
     @required this.watchVideoArguments,
   }) : super(key: key);
 

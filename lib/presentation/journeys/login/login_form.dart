@@ -12,7 +12,7 @@ import '../../widgets/button.dart';
 import 'label_field_widget.dart';
 
 class LoginForm extends StatefulWidget {
-  const LoginForm({Key key}) : super(key: key);
+  const LoginForm({Key? key}) : super(key: key);
 
   @override
   _LoginFormState createState() => _LoginFormState();

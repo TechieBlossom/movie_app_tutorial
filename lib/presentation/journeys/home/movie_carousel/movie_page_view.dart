@@ -13,7 +13,7 @@ class MoviePageView extends StatefulWidget {
   final int initialPage;
 
   const MoviePageView({
-    Key key,
+    Key? key,
     @required this.movies,
     @required this.initialPage,
   })  : assert(initialPage >= 0, 'initialPage cannot be less than 0'),

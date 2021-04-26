@@ -13,7 +13,7 @@ class SearchMovieCard extends StatelessWidget {
   final MovieEntity movie;
 
   const SearchMovieCard({
-    Key key,
+    Key? key,
     @required this.movie,
   }) : super(key: key);
 
