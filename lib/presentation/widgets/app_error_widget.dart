@@ -14,8 +14,8 @@ class AppErrorWidget extends StatelessWidget {
 
   const AppErrorWidget({
     Key? key,
-    @required this.errorType,
-    @required this.onPressed,
+    required this.errorType,
+    required this.onPressed,
   }) : super(key: key);
 
   @override

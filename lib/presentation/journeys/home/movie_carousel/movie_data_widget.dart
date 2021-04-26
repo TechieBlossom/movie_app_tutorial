@@ -10,7 +10,7 @@ class MovieDataWidget extends StatelessWidget {
     return BlocBuilder<MovieBackdropCubit, MovieEntity>(
       builder: (context, movie) {
         return Text(
-          movie?.title ?? '',
+          movie.title,
           textAlign: TextAlign.center,
           maxLines: 1,
           overflow: TextOverflow.fade,

@@ -14,9 +14,9 @@ class MovieTabCardWidget extends StatelessWidget {
 
   const MovieTabCardWidget({
     Key? key,
-    @required this.movieId,
-    @required this.title,
-    @required this.posterPath,
+    required this.movieId,
+    required this.title,
+    required this.posterPath,
   }) : super(key: key);
 
   @override

@@ -13,8 +13,8 @@ class MovieCardWidget extends StatelessWidget {
 
   const MovieCardWidget({
     Key? key,
-    @required this.movieId,
-    @required this.posterPath,
+    required this.movieId,
+    required this.posterPath,
   }) : super(key: key);
 
   @override

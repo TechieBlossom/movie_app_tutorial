@@ -30,7 +30,7 @@ class MovieBackdropWidget extends StatelessWidget {
                 builder: (context, movie) {
                   return CachedNetworkImage(
                     imageUrl:
-                        '${ApiConstants.BASE_IMAGE_URL}${movie?.backdropPath}',
+                        '${ApiConstants.BASE_IMAGE_URL}${movie.backdropPath}',
                     fit: BoxFit.fitHeight,
                   );
                 },

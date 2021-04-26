@@ -10,7 +10,7 @@ class FavoriteMovieGridView extends StatelessWidget {
 
   const FavoriteMovieGridView({
     Key? key,
-    @required this.movies,
+    required this.movies,
   }) : super(key: key);
 
   @override

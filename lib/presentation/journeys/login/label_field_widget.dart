@@ -24,9 +24,9 @@ class LabelFieldWidget extends StatelessWidget {
 
   const LabelFieldWidget({
     Key? key,
-    @required this.label,
-    @required this.hintText,
-    @required this.controller,
+    required this.label,
+    required this.hintText,
+    required this.controller,
     this.isPasswordField = false,
     this.textFieldKey,
   }) : super(key: key);

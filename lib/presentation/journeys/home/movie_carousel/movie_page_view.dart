@@ -14,8 +14,8 @@ class MoviePageView extends StatefulWidget {
 
   const MoviePageView({
     Key? key,
-    @required this.movies,
-    @required this.initialPage,
+    required this.movies,
+    this.initialPage = 0,
   })  : assert(initialPage >= 0, 'initialPage cannot be less than 0'),
         super(key: key);
 
@@ -59,7 +59,7 @@ class _MoviePageViewState extends State<MoviePageView> {
           );
         },
         pageSnapping: true,
-        itemCount: widget.movies?.length ?? 0,
+        itemCount: widget.movies.length,
         onPageChanged: (index) {
           BlocProvider.of<MovieBackdropCubit>(context)
               .backdropChanged(widget.movies[index]);
