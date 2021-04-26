@@ -1,16 +1,16 @@
 import 'dart:ui';
 
 class ScreenUtil {
-  static late ScreenUtil? _instance;
+  static late ScreenUtil _instance;
   static const int defaultWidth = 414;
   static const int defaultHeight = 896;
 
   /// Size of the phone in UI Design , px
-  num uiWidthPx;
-  num uiHeightPx;
+  late num uiWidthPx;
+  late num uiHeightPx;
 
   /// allowFontScaling Specifies whether fonts should scale to respect Text Size accessibility settings. The default is false.
-  bool allowFontScaling;
+  late bool allowFontScaling;
 
   static late double _screenWidth;
   static late double _screenHeight;
@@ -29,9 +29,7 @@ class ScreenUtil {
       {num width = defaultWidth,
       num height = defaultHeight,
       bool allowFontScaling = false}) {
-    if (_instance == null) {
-      _instance = ScreenUtil._();
-    }
+    _instance = ScreenUtil._();
     _instance.uiWidthPx = width;
     _instance.uiHeightPx = height;
     _instance.allowFontScaling = allowFontScaling;
@@ -96,12 +94,12 @@ class ScreenUtil {
   ///Font size adaptation method
   ///@param [fontSize] The size of the font on the UI design, in px.
   ///@param [allowFontScaling]
-  double setSp(num fontSize, {bool allowFontScalingSelf}) =>
-      allowFontScalingSelf == null
-          ? (allowFontScaling
+  double setSp(num fontSize, {bool allowFontScalingSelf = false}) =>
+      allowFontScalingSelf
+          ? (allowFontScalingSelf
               ? (fontSize * scaleText)
               : ((fontSize * scaleText) / _textScaleFactor))
-          : (allowFontScalingSelf
+          : (allowFontScaling
               ? (fontSize * scaleText)
               : ((fontSize * scaleText) / _textScaleFactor));
 }
