@@ -3,13 +3,14 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/common/constants/translation_constants.dart';
-import 'package:movieapp/domain/entities/app_error.dart';
-import 'package:movieapp/domain/entities/login_request_params.dart';
-import 'package:movieapp/domain/entities/no_params.dart';
-import 'package:movieapp/domain/usecases/login_user.dart';
-import 'package:movieapp/domain/usecases/logout_user.dart';
-import 'package:movieapp/presentation/blocs/loading/loading_cubit.dart';
+
+import '../../../common/constants/translation_constants.dart';
+import '../../../domain/entities/app_error.dart';
+import '../../../domain/entities/login_request_params.dart';
+import '../../../domain/entities/no_params.dart';
+import '../../../domain/usecases/login_user.dart';
+import '../../../domain/usecases/logout_user.dart';
+import '../loading/loading_cubit.dart';
 
 part 'login_state.dart';
 
@@ -24,7 +25,7 @@ class LoginCubit extends Cubit<LoginState> {
     @required this.loadingCubit,
   }) : super(LoginInitial());
 
-  void initiateLogin(String username, password) async {
+  void initiateLogin(String username, String password) async {
     loadingCubit.show();
     final Either<AppError, bool> eitherResponse = await loginUser(
       LoginRequestParams(

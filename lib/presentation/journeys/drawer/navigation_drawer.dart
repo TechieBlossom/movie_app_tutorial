@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/common/constants/languages.dart';
-import 'package:movieapp/common/constants/route_constants.dart';
-import 'package:movieapp/common/constants/size_constants.dart';
-import 'package:movieapp/common/constants/translation_constants.dart';
-import 'package:movieapp/common/extensions/size_extensions.dart';
-import 'package:movieapp/common/extensions/string_extensions.dart';
-import 'package:movieapp/presentation/blocs/language/language_cubit.dart';
-import 'package:movieapp/presentation/blocs/login/login_cubit.dart';
-import 'package:movieapp/presentation/journeys/drawer/navigation_expanded_list_item.dart';
-import 'package:movieapp/presentation/journeys/drawer/navigation_list_item.dart';
-import 'package:movieapp/presentation/widgets/app_dialog.dart';
-import 'package:movieapp/presentation/widgets/logo.dart';
 import 'package:wiredash/wiredash.dart';
+
+import '../../../common/constants/languages.dart';
+import '../../../common/constants/route_constants.dart';
+import '../../../common/constants/size_constants.dart';
+import '../../../common/constants/translation_constants.dart';
+import '../../../common/extensions/size_extensions.dart';
+import '../../../common/extensions/string_extensions.dart';
+import '../../blocs/language/language_cubit.dart';
+import '../../blocs/login/login_cubit.dart';
+import '../../widgets/app_dialog.dart';
+import '../../widgets/logo.dart';
+import 'navigation_expanded_list_item.dart';
+import 'navigation_list_item.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer();

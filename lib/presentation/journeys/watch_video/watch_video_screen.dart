@@ -1,12 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movieapp/common/constants/size_constants.dart';
-import 'package:movieapp/common/constants/translation_constants.dart';
-import 'package:movieapp/common/extensions/string_extensions.dart';
-import 'package:movieapp/common/extensions/size_extensions.dart';
-import 'package:movieapp/domain/entities/video_entity.dart';
-import 'package:movieapp/presentation/journeys/watch_video/watch_video_arguments.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+import '../../../common/constants/size_constants.dart';
+import '../../../common/constants/translation_constants.dart';
+import '../../../common/extensions/size_extensions.dart';
+import '../../../common/extensions/string_extensions.dart';
+import '../../../domain/entities/video_entity.dart';
+import 'watch_video_arguments.dart';
 
 class WatchVideoScreen extends StatefulWidget {
   final WatchVideoArguments watchVideoArguments;

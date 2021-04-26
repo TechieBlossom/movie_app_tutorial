@@ -1,4 +1,4 @@
-import 'package:movieapp/data/models/movie_model.dart';
+import 'movie_model.dart';
 
 class MoviesResultModel {
   List<MovieModel> movies;
@@ -7,7 +7,7 @@ class MoviesResultModel {
 
   MoviesResultModel.fromJson(Map<String, dynamic> json) {
     if (json['results'] != null) {
-      movies = List.empty();
+      movies = List.empty(growable: true);
       json['results'].forEach((v) {
         movies.add(MovieModel.fromJson(v));
       });

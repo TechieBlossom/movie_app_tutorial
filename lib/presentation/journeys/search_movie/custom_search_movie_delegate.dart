@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/common/constants/size_constants.dart';
-import 'package:movieapp/common/constants/translation_constants.dart';
-import 'package:movieapp/common/extensions/string_extensions.dart';
-import 'package:movieapp/presentation/blocs/search_movie/search_movie_cubit.dart';
-import 'package:movieapp/presentation/journeys/search_movie/search_movie_card.dart';
-import 'package:movieapp/presentation/themes/theme_color.dart';
-import 'package:movieapp/presentation/themes/theme_text.dart';
-import 'package:movieapp/common/extensions/size_extensions.dart';
-import 'package:movieapp/presentation/widgets/app_error_widget.dart';
+
+import '../../../common/constants/size_constants.dart';
+import '../../../common/constants/translation_constants.dart';
+import '../../../common/extensions/size_extensions.dart';
+import '../../../common/extensions/string_extensions.dart';
+import '../../blocs/search_movie/search_movie_cubit.dart';
+import '../../themes/theme_color.dart';
+import '../../themes/theme_text.dart';
+import '../../widgets/app_error_widget.dart';
+import 'search_movie_card.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   final SearchMovieCubit searchMovieCubit;

@@ -1,13 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/common/constants/route_constants.dart';
-import 'package:movieapp/common/constants/size_constants.dart';
-import 'package:movieapp/common/extensions/size_extensions.dart';
-import 'package:movieapp/data/core/api_constants.dart';
-import 'package:movieapp/domain/entities/movie_entity.dart';
-import 'package:movieapp/presentation/blocs/favorite/favorite_cubit.dart';
-import 'package:movieapp/presentation/journeys/movie_detail/movie_detail_arguments.dart';
+
+import '../../../common/constants/route_constants.dart';
+import '../../../common/constants/size_constants.dart';
+import '../../../common/extensions/size_extensions.dart';
+import '../../../data/core/api_constants.dart';
+import '../../../domain/entities/movie_entity.dart';
+import '../../blocs/favorite/favorite_cubit.dart';
+import '../movie_detail/movie_detail_arguments.dart';
 
 class FavoriteMovieCardWidget extends StatelessWidget {
   final MovieEntity movie;
@@ -43,8 +44,8 @@ class FavoriteMovieCardWidget extends StatelessWidget {
               Align(
                 alignment: Alignment.topRight,
                 child: GestureDetector(
-                  onTap: () => context.read<FavoriteCubit>()
-                      .deleteMovie(movie.id),
+                  onTap: () =>
+                      context.read<FavoriteCubit>().deleteMovie(movie.id),
                   child: Padding(
                     padding: EdgeInsets.all(Sizes.dimen_12.w),
                     child: Icon(

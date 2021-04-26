@@ -1,8 +1,9 @@
-import 'package:movieapp/domain/entities/app_error.dart';
 import 'package:dartz/dartz.dart';
-import 'package:movieapp/domain/entities/movie_entity.dart';
-import 'package:movieapp/domain/repositories/movie_repository.dart';
-import 'package:movieapp/domain/usecases/usecase.dart';
+
+import '../entities/app_error.dart';
+import '../entities/movie_entity.dart';
+import '../repositories/movie_repository.dart';
+import 'usecase.dart';
 
 class SaveMovie extends UseCase<void, MovieEntity> {
   final MovieRepository movieRepository;

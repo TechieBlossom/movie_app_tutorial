@@ -1,4 +1,4 @@
-import 'package:movieapp/domain/entities/cast_entity.dart';
+import '../../domain/entities/cast_entity.dart';
 
 class CastCrewResultModel {
   int id;
@@ -10,13 +10,13 @@ class CastCrewResultModel {
   CastCrewResultModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     if (json['cast'] != null) {
-      cast = List.empty();
+      cast = List.empty(growable: true);
       json['cast'].forEach((v) {
         cast.add(new CastModel.fromJson(v));
       });
     }
     if (json['crew'] != null) {
-      crew = List.empty();
+      crew = List.empty(growable: true);
       json['crew'].forEach((v) {
         crew.add(new Crew.fromJson(v));
       });

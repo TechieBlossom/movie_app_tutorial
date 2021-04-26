@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:movieapp/domain/entities/movie_detail_entity.dart';
+
+import 'movie_detail_entity.dart';
 
 class MovieEntity extends Equatable {
   final String posterPath;

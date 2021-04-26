@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:movieapp/common/constants/route_constants.dart';
-import 'package:movieapp/presentation/blocs/loading/loading_cubit.dart';
-import 'package:movieapp/presentation/blocs/login/login_cubit.dart';
-import 'package:movieapp/presentation/journeys/loading/loading_screen.dart';
-import 'package:movieapp/presentation/routes.dart';
 
 import '../common/constants/languages.dart';
+import '../common/constants/route_constants.dart';
 import '../common/screenutil/screenutil.dart';
 import '../di/get_it.dart';
 import 'app_localizations.dart';
 import 'blocs/language/language_cubit.dart';
+import 'blocs/loading/loading_cubit.dart';
+import 'blocs/login/login_cubit.dart';
 import 'fade_page_route_builder.dart';
+import 'journeys/loading/loading_screen.dart';
+import 'routes.dart';
 import 'themes/theme_color.dart';
 import 'themes/theme_text.dart';
 import 'wiredash_app.dart';
@@ -60,50 +60,48 @@ class _MovieAppState extends State<MovieApp> {
           value: _loadingCubit,
         ),
       ],
-      child: BlocBuilder<LanguageCubit, Locale>(
-        builder: (context, locale) {
-            return WiredashApp(
-              navigatorKey: _navigatorKey,
-              languageCode: locale.languageCode,
-              child: MaterialApp(
-                navigatorKey: _navigatorKey,
-                debugShowCheckedModeBanner: false,
-                title: 'Movie App',
-                theme: ThemeData(
-                  unselectedWidgetColor: AppColor.royalBlue,
-                  primaryColor: AppColor.vulcan,
-                  accentColor: AppColor.royalBlue,
-                  scaffoldBackgroundColor: AppColor.vulcan,
-                  visualDensity: VisualDensity.adaptivePlatformDensity,
-                  textTheme: ThemeText.getTextTheme(),
-                  appBarTheme: const AppBarTheme(elevation: 0),
-                ),
-                supportedLocales:
-                    Languages.languages.map((e) => Locale(e.code)).toList(),
-                locale: locale,
-                localizationsDelegates: [
-                  AppLocalizations.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                ],
-                builder: (context, child) {
-                  return LoadingScreen(
-                    screen: child,
-                  );
-                },
-                initialRoute: RouteList.initial,
-                onGenerateRoute: (RouteSettings settings) {
-                  final routes = Routes.getRoutes(settings);
-                  final WidgetBuilder builder = routes[settings.name];
-                  return FadePageRouteBuilder(
-                    builder: builder,
-                    settings: settings,
-                  );
-                },
-              ),
-            );
-          }
-      ),
+      child: BlocBuilder<LanguageCubit, Locale>(builder: (context, locale) {
+        return WiredashApp(
+          navigatorKey: _navigatorKey,
+          languageCode: locale.languageCode,
+          child: MaterialApp(
+            navigatorKey: _navigatorKey,
+            debugShowCheckedModeBanner: false,
+            title: 'Movie App',
+            theme: ThemeData(
+              unselectedWidgetColor: AppColor.royalBlue,
+              primaryColor: AppColor.vulcan,
+              accentColor: AppColor.royalBlue,
+              scaffoldBackgroundColor: AppColor.vulcan,
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+              textTheme: ThemeText.getTextTheme(),
+              appBarTheme: const AppBarTheme(elevation: 0),
+            ),
+            supportedLocales:
+                Languages.languages.map((e) => Locale(e.code)).toList(),
+            locale: locale,
+            localizationsDelegates: [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+            builder: (context, child) {
+              return LoadingScreen(
+                screen: child,
+              );
+            },
+            initialRoute: RouteList.initial,
+            onGenerateRoute: (RouteSettings settings) {
+              final routes = Routes.getRoutes(settings);
+              final WidgetBuilder builder = routes[settings.name];
+              return FadePageRouteBuilder(
+                builder: builder,
+                settings: settings,
+              );
+            },
+          ),
+        );
+      }),
     );
   }
 }

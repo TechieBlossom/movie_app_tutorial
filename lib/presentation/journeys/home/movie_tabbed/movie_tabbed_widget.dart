@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/common/constants/size_constants.dart';
-import 'package:movieapp/common/constants/translation_constants.dart';
-import 'package:movieapp/common/extensions/string_extensions.dart';
-import 'package:movieapp/common/extensions/size_extensions.dart';
-import 'package:movieapp/presentation/blocs/movie_tabbed/movie_tabbed_cubit.dart';
-import 'package:movieapp/presentation/journeys/home/movie_tabbed/tab_title_widget.dart';
-import 'package:movieapp/presentation/journeys/loading/loading_circle.dart';
-import 'package:movieapp/presentation/widgets/app_error_widget.dart';
 
+import '../../../../common/constants/size_constants.dart';
+import '../../../../common/constants/translation_constants.dart';
+import '../../../../common/extensions/size_extensions.dart';
+import '../../../../common/extensions/string_extensions.dart';
+import '../../../blocs/movie_tabbed/movie_tabbed_cubit.dart';
+import '../../../widgets/app_error_widget.dart';
+import '../../loading/loading_circle.dart';
 import 'movie_list_view_builder.dart';
 import 'movie_tabbed_constants.dart';
+import 'tab_title_widget.dart';
 
 class MovieTabbedWidget extends StatefulWidget {
   @override

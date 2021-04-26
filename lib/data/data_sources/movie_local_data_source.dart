@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
-import 'package:movieapp/data/tables/movie_table.dart';
+
+import '../tables/movie_table.dart';
 
 abstract class MovieLocalDataSource {
   Future<void> saveMovie(MovieTable movieTable);

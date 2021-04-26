@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movieapp/domain/entities/movie_entity.dart';
-import 'package:movieapp/presentation/widgets/movie_app_bar.dart';
-import 'package:movieapp/presentation/widgets/separator.dart';
 
+import '../../../../domain/entities/movie_entity.dart';
+import '../../../widgets/movie_app_bar.dart';
+import '../../../widgets/separator.dart';
 import 'movie_backdrop_widget.dart';
 import 'movie_data_widget.dart';
 import 'movie_page_view.dart';

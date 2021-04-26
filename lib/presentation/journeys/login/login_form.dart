@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movieapp/common/constants/route_constants.dart';
-import 'package:movieapp/common/constants/size_constants.dart';
-import 'package:movieapp/common/constants/translation_constants.dart';
-import 'package:movieapp/presentation/themes/theme_text.dart';
-import 'package:movieapp/presentation/blocs/login/login_cubit.dart';
-import 'package:movieapp/presentation/journeys/login/label_field_widget.dart';
-import 'package:movieapp/common/extensions/size_extensions.dart';
-import 'package:movieapp/common/extensions/string_extensions.dart';
-import 'package:movieapp/presentation/widgets/button.dart';
+
+import '../../../common/constants/route_constants.dart';
+import '../../../common/constants/size_constants.dart';
+import '../../../common/constants/translation_constants.dart';
+import '../../../common/extensions/size_extensions.dart';
+import '../../../common/extensions/string_extensions.dart';
+import '../../blocs/login/login_cubit.dart';
+import '../../themes/theme_text.dart';
+import '../../widgets/button.dart';
+import 'label_field_widget.dart';
 
 class LoginForm extends StatefulWidget {
+  const LoginForm({Key key}) : super(key: key);
+
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -69,12 +72,14 @@ class _LoginFormState extends State<LoginForm> {
               label: TranslationConstants.username.t(context),
               hintText: TranslationConstants.enterTMDbUsername.t(context),
               controller: _userNameController,
+              textFieldKey: const ValueKey('username_text_field_key'),
             ),
             LabelFieldWidget(
               label: TranslationConstants.password.t(context),
               hintText: TranslationConstants.enterPassword.t(context),
               controller: _passwordController,
               isPasswordField: true,
+              textFieldKey: const ValueKey('password_text_field_key'),
             ),
             BlocConsumer<LoginCubit, LoginState>(
               buildWhen: (previous, current) => current is LoginError,

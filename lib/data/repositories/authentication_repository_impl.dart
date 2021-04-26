@@ -1,12 +1,13 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:movieapp/data/core/unathorised_exception.dart';
-import 'package:movieapp/data/data_sources/authentication_local_data_source.dart';
-import 'package:movieapp/data/data_sources/authentication_remote_data_source.dart';
-import 'package:movieapp/data/models/request_token_model.dart';
-import 'package:movieapp/domain/entities/app_error.dart';
-import 'package:movieapp/domain/repositories/authentication_repository.dart';
+
+import '../../domain/entities/app_error.dart';
+import '../../domain/repositories/authentication_repository.dart';
+import '../core/unathorised_exception.dart';
+import '../data_sources/authentication_local_data_source.dart';
+import '../data_sources/authentication_remote_data_source.dart';
+import '../models/request_token_model.dart';
 
 class AuthenticationRepositoryImpl extends AuthenticationRepository {
   final AuthenticationRemoteDataSource _authenticationRemoteDataSource;
