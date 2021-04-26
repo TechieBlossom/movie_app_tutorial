@@ -36,6 +36,7 @@ class Button extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: Sizes.dimen_10.h),
       height: Sizes.dimen_16.h,
       child: TextButton(
+        key: const ValueKey('main_button'),
         onPressed: isEnabled ? onPressed : null,
         child: Text(
           text.t(context),

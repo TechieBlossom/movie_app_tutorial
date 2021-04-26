@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -13,11 +10,9 @@ import 'package:movieapp/presentation/app_localizations.dart';
 import 'package:movieapp/presentation/blocs/language/language_cubit.dart';
 import 'package:movieapp/presentation/blocs/loading/loading_cubit.dart';
 import 'package:movieapp/presentation/blocs/login/login_cubit.dart';
-import 'package:movieapp/presentation/journeys/login/label_field_widget.dart';
 import 'package:movieapp/presentation/journeys/login/login_form.dart';
-import 'package:movieapp/presentation/widgets/button.dart';
-
-import '../../../common/utils/test_utils.dart';
+import 'package:movieapp/presentation/journeys/login/login_screen.dart';
+import 'package:movieapp/presentation/widgets/logo.dart';
 
 class LanguageCubitMock extends Mock implements LanguageCubit {}
 
@@ -25,35 +20,27 @@ class LoginCubitMock extends Mock implements LoginCubit {}
 
 class LoadingCubitMock extends Mock implements LoadingCubit {}
 
-class NavigatorObserverMock extends Mock implements NavigatorObserver {}
+class NavigatorObseverMock extends Mock implements NavigatorObserver {}
 
 main() {
+  Widget app;
   LanguageCubitMock _languageCubitMock;
   LoginCubitMock _loginCubitMock;
   LoadingCubitMock _loadingCubitMock;
-  NavigatorObserverMock _mockObserver;
+  NavigatorObseverMock _observer;
 
   setUp(() {
     _languageCubitMock = LanguageCubitMock();
-    _loadingCubitMock = LoadingCubitMock();
     _loginCubitMock = LoginCubitMock();
-    _mockObserver = NavigatorObserverMock();
+    _loadingCubitMock = LoadingCubitMock();
+    _observer = NavigatorObseverMock();
 
     ScreenUtil.init();
-  });
-
-  tearDown(() {
-    _languageCubitMock.close();
-    _loadingCubitMock.close();
-    _loginCubitMock.close();
-  });
-
-  Widget getWidget() {
-    return MultiBlocProvider(
+    app = MultiBlocProvider(
       providers: [
-        BlocProvider<LanguageCubit>(create: (_) => _languageCubitMock),
-        BlocProvider<LoginCubit>(create: (_) => _loginCubitMock),
-        BlocProvider<LoadingCubit>(create: (_) => _loadingCubitMock),
+        BlocProvider<LanguageCubit>.value(value: _languageCubitMock),
+        BlocProvider<LoginCubit>.value(value: _loginCubitMock),
+        BlocProvider<LoadingCubit>.value(value: _loadingCubitMock),
       ],
       child: MaterialApp(
         locale: Locale(Languages.languages[0].code),
@@ -64,67 +51,79 @@ main() {
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
-        home: Scaffold(body: LoginForm()),
-        navigatorObservers: [_mockObserver],
+        home: Scaffold(
+          body: LoginForm(),
+        ),
+        navigatorObservers: [_observer],
       ),
     );
-  }
+  });
 
-  group(('Login Form Test'), () {
-    final Finder usernameFieldFinder =
-        find.byKey(ValueKey('username_text_field_key'));
-    final Finder passwordFieldFinder =
-        find.byKey(ValueKey('password_text_field_key'));
-    final Finder signInButtonFinder = find.byType(TextButton);
+  tearDown(() {
+    _loginCubitMock.close();
+    _loadingCubitMock.close();
+    _languageCubitMock.close();
+  });
 
-    Future<Null> _verifyBasic() async {
-      expect(usernameFieldFinder, findsOneWidget);
-      expect(passwordFieldFinder, findsOneWidget);
-      expect(signInButtonFinder, findsOneWidget);
-    }
+  // testWidgets(
+  //     'should show error message when sign in API call with username, password is made',
+  //     (WidgetTester tester) async {
+  //   when(_loginCubitMock.state)
+  //       .thenAnswer((_) => LoginError(TranslationConstants.sessionDenied));
 
-    testWidgets(
-        'should show error message when sign in API call with username, password is made',
-        (WidgetTester tester) async {
-      when(_loginCubitMock.state)
-          .thenAnswer((_) => LoginError(TranslationConstants.sessionDenied));
+  //   await tester.pumpWidget(app);
+  //   await tester.pump();
 
-      await tester.pumpWidget(getWidget());
-      await tester.pumpAndSettle();
+  //   final Finder usernameField =
+  //       find.byKey(const ValueKey('username_text_field_key'));
+  //   final Finder passwordField =
+  //       find.byKey(const ValueKey('password_text_field_key'));
+  //   final Finder signInButton = find.byType(TextButton);
 
-      await _verifyBasic();
+  //   expect(usernameField, findsOneWidget);
+  //   expect(passwordField, findsOneWidget);
+  //   expect(signInButton, findsOneWidget);
 
-      await tester.enterText(usernameFieldFinder, 'username');
-      await tester.enterText(passwordFieldFinder, 'password');
-      await tester.pumpAndSettle();
+  //   await tester.enterText(usernameField, 'username');
+  //   await tester.enterText(passwordField, 'password');
+  //   await tester.pump();
 
-      await tester.tap(signInButtonFinder);
-      await tester.pumpAndSettle();
+  //   await tester.tap(signInButton);
+  //   await tester.pump();
 
-      expect(find.text('Session denied'), findsOneWidget);
+  //   expect(find.text('Session denied'), findsOneWidget);
 
-      verify(_loginCubitMock.initiateLogin(any, any)).called(1);
-    });
+  //   verify(_loginCubitMock.initiateLogin('username', 'password')).called(1);
+  // });
 
-    // testWidgets(
-    //     'should show success message when sign in API call with username, password is made',
-    //     (WidgetTester tester) async {
-    //   when(_loginCubitMock.state).thenAnswer((_) => LoginSuccess());
+  testWidgets(
+      'should show success message when sign in API call with username, password is made',
+      (WidgetTester tester) async {
+    when(_loginCubitMock.state).thenAnswer((_) => LoginSuccess());
 
-    //   await tester.pumpWidget(getWidget());
-    //   await tester.pumpAndSettle();
+    await tester.pumpWidget(app);
+    await tester.pump();
 
-    //   await tester.enterText(usernameFieldFinder, 'username');
-    //   await tester.enterText(passwordFieldFinder, 'password');
-    //   await tester.pumpAndSettle();
+    final Finder usernameField =
+        find.byKey(const ValueKey('username_text_field_key'));
+    final Finder passwordField =
+        find.byKey(const ValueKey('password_text_field_key'));
+    final Finder signInButton = find.byType(TextButton);
 
-    //   await tester.tap(signInButtonFinder);
-    //   await tester.pumpAndSettle();
+    expect(usernameField, findsOneWidget);
+    expect(passwordField, findsOneWidget);
+    expect(signInButton, findsOneWidget);
 
-    //   expect(find.text('Session denied'), findsNothing);
+    await tester.enterText(usernameField, 'username');
+    await tester.enterText(passwordField, 'password');
+    await tester.pump();
 
-    //   verify(_loginCubitMock.initiateLogin(any, any)).called(1);
-    //   verify(_mockObserver.didPush(any, any));
-    // });
+    await tester.tap(signInButton);
+    await tester.pump();
+
+    expect(find.text('Session denied'), findsNothing);
+
+    verify(_observer.didPush(any, any));
+    verify(_loginCubitMock.initiateLogin('username', 'password')).called(1);
   });
 }
