@@ -68,7 +68,7 @@ void main() {
               .thenAnswer((_) async => Right(MovieDetailEntity()));
           bloc.loadMovieDetail(1);
         },
-        expect: [isA<MovieDetailLoaded>()],
+        expect: () => [isA<MovieDetailLoaded>()],
         verify: (bloc) {
           verify(loadingCubitMock.show()).called(1);
           verify(castCubitMock.loadCast(1)).called(1);
@@ -84,7 +84,7 @@ void main() {
               .thenAnswer((_) async => Left(AppError(AppErrorType.api)));
           bloc.loadMovieDetail(1);
         },
-        expect: [isA<MovieDetailError>()],
+        expect: () => [isA<MovieDetailError>()],
         verify: (bloc) {
           verify(loadingCubitMock.show()).called(1);
           verify(castCubitMock.loadCast(1)).called(1);

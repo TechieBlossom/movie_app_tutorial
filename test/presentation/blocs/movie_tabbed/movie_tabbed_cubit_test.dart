@@ -51,10 +51,10 @@ main() {
 
         cubit.movieTabChanged(currentTabIndex: 1);
       },
-      expect: [
-        isA<MovieTabLoading>(),
-        isA<MovieTabChanged>(),
-      ],
+      expect: () => [
+            isA<MovieTabLoading>(),
+            isA<MovieTabChanged>(),
+          ],
       verify: (MovieTabbedCubit cubit) {
         verify(getPlayingNowMock.call(any)).called(1);
       });
@@ -68,10 +68,10 @@ main() {
 
         cubit.movieTabChanged(currentTabIndex: 0);
       },
-      expect: [
-        isA<MovieTabLoading>(),
-        isA<MovieTabChanged>(),
-      ],
+      expect: () => [
+            isA<MovieTabLoading>(),
+            isA<MovieTabChanged>(),
+          ],
       verify: (MovieTabbedCubit cubit) {
         verify(getPopularMock.call(any)).called(1);
       });
@@ -85,10 +85,10 @@ main() {
 
         cubit.movieTabChanged(currentTabIndex: 2);
       },
-      expect: [
-        isA<MovieTabLoading>(),
-        isA<MovieTabChanged>(),
-      ],
+      expect: () => [
+            isA<MovieTabLoading>(),
+            isA<MovieTabChanged>(),
+          ],
       verify: (MovieTabbedCubit cubit) {
         verify(getComingSoonMock.call(any)).called(1);
       });
@@ -102,10 +102,10 @@ main() {
 
         cubit.movieTabChanged(currentTabIndex: 2);
       },
-      expect: [
-        isA<MovieTabLoading>(),
-        isA<MovieTabLoadError>(),
-      ],
+      expect: () => [
+            isA<MovieTabLoading>(),
+            isA<MovieTabLoadError>(),
+          ],
       verify: (MovieTabbedCubit cubit) {
         verify(getComingSoonMock.call(any)).called(1);
       });
