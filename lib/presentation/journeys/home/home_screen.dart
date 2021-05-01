@@ -35,10 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void dispose() {
     super.dispose();
-    movieCarouselCubit?.close();
-    movieBackdropCubit?.close();
-    movieTabbedCubit?.close();
-    searchMovieCubit?.close();
+    movieCarouselCubit.close();
+    movieBackdropCubit.close();
+    movieTabbedCubit.close();
+    searchMovieCubit.close();
   }
 
   @override

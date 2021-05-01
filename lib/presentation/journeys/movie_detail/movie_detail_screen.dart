@@ -45,10 +45,10 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
 
   @override
   void dispose() {
-    _movieDetailCubit?.close();
-    _castCubit?.close();
-    _videosCubit?.close();
-    _favoriteCubit?.close();
+    _movieDetailCubit.close();
+    _castCubit.close();
+    _videosCubit.close();
+    _favoriteCubit.close();
     super.dispose();
   }
 

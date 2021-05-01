@@ -39,9 +39,9 @@ class _MovieAppState extends State<MovieApp> {
 
   @override
   void dispose() {
-    _languageCubit?.close();
-    _loginBloc?.close();
-    _loadingCubit?.close();
+    _languageCubit.close();
+    _loginBloc.close();
+    _loadingCubit.close();
     super.dispose();
   }
 

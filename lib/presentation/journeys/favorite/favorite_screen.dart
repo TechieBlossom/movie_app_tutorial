@@ -24,7 +24,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
 
   @override
   void dispose() {
-    _favoriteBloc?.close();
+    _favoriteBloc.close();
     super.dispose();
   }
 
