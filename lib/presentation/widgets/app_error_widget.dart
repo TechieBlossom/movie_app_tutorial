@@ -40,7 +40,7 @@ class AppErrorWidget extends StatelessWidget {
                 text: TranslationConstants.retry,
               ),
               Button(
-                onPressed: () => Wiredash.of(context).show(),
+                onPressed: () => Wiredash.of(context)?.show(),
                 text: TranslationConstants.feedback,
               ),
             ],

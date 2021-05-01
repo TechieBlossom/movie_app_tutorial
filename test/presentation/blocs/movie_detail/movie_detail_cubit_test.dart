@@ -79,7 +79,7 @@ void main() {
 
     blocTest('should load movie failure',
         build: () => movieDetailCubit,
-        act: (bloc) async {
+        act: (MovieDetailCubit bloc) async {
           when(movieDetailMock.call(MovieParams(1)))
               .thenAnswer((_) async => Left(AppError(AppErrorType.api)));
           bloc.loadMovieDetail(1);
