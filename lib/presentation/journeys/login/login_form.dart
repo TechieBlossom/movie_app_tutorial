@@ -100,7 +100,7 @@ class _LoginFormState extends State<LoginForm> {
               },
             ),
             Button(
-              onPressed: enableSignIn
+              onPressed: () => enableSignIn
                   ? () {
                       BlocProvider.of<LoginCubit>(context).initiateLogin(
                         _userNameController?.text ?? '',
