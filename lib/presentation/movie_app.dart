@@ -24,9 +24,9 @@ class MovieApp extends StatefulWidget {
 
 class _MovieAppState extends State<MovieApp> {
   final _navigatorKey = GlobalKey<NavigatorState>();
-  LanguageCubit _languageCubit;
-  LoginCubit _loginBloc;
-  LoadingCubit _loadingCubit;
+  late LanguageCubit _languageCubit;
+  late LoginCubit _loginBloc;
+  late LoadingCubit _loadingCubit;
 
   @override
   void initState() {

@@ -17,10 +17,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  MovieCarouselCubit movieCarouselCubit;
-  MovieBackdropCubit movieBackdropCubit;
-  MovieTabbedCubit movieTabbedCubit;
-  SearchMovieCubit searchMovieCubit;
+  late MovieCarouselCubit movieCarouselCubit;
+  late MovieBackdropCubit movieBackdropCubit;
+  late MovieTabbedCubit movieTabbedCubit;
+  late SearchMovieCubit searchMovieCubit;
 
   @override
   void initState() {
@@ -61,7 +61,6 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         drawer: const NavigationDrawer(),
         body: BlocBuilder<MovieCarouselCubit, MovieCarouselState>(
-          cubit: movieCarouselCubit,
           builder: (context, state) {
             if (state is MovieCarouselLoaded) {
               return Stack(

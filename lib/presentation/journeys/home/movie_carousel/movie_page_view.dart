@@ -24,7 +24,7 @@ class MoviePageView extends StatefulWidget {
 }
 
 class _MoviePageViewState extends State<MoviePageView> {
-  PageController _pageController;
+  late PageController? _pageController;
 
   @override
   void initState() {
@@ -38,7 +38,7 @@ class _MoviePageViewState extends State<MoviePageView> {
 
   @override
   void dispose() {
-    _pageController.dispose();
+    _pageController?.dispose();
     super.dispose();
   }
 
@@ -53,7 +53,7 @@ class _MoviePageViewState extends State<MoviePageView> {
           final MovieEntity movie = widget.movies[index];
           return AnimatedMovieCardWidget(
             index: index,
-            pageController: _pageController,
+            pageController: _pageController!,
             movieId: movie.id,
             posterPath: movie.posterPath,
           );

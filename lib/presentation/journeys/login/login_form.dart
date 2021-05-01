@@ -19,7 +19,7 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  TextEditingController _userNameController, _passwordController;
+  late TextEditingController? _userNameController, _passwordController;
   bool enableSignIn = false;
 
   @override
@@ -28,16 +28,16 @@ class _LoginFormState extends State<LoginForm> {
     _userNameController = TextEditingController();
     _passwordController = TextEditingController();
 
-    _userNameController.addListener(() {
+    _userNameController?.addListener(() {
       setState(() {
-        enableSignIn = _userNameController.text.isNotEmpty &&
-            _passwordController.text.isNotEmpty;
+        enableSignIn = (_userNameController?.text.isNotEmpty ?? false) &&
+            (_passwordController?.text.isNotEmpty ?? false);
       });
     });
-    _passwordController.addListener(() {
+    _passwordController?.addListener(() {
       setState(() {
-        enableSignIn = _userNameController.text.isNotEmpty &&
-            _passwordController.text.isNotEmpty;
+        enableSignIn = (_userNameController?.text.isNotEmpty ?? false) &&
+            (_passwordController?.text.isNotEmpty ?? false);
       });
     });
   }
@@ -71,13 +71,13 @@ class _LoginFormState extends State<LoginForm> {
             LabelFieldWidget(
               label: TranslationConstants.username.t(context),
               hintText: TranslationConstants.enterTMDbUsername.t(context),
-              controller: _userNameController,
+              controller: _userNameController!,
               textFieldKey: const ValueKey('username_text_field_key'),
             ),
             LabelFieldWidget(
               label: TranslationConstants.password.t(context),
               hintText: TranslationConstants.enterPassword.t(context),
-              controller: _passwordController,
+              controller: _passwordController!,
               isPasswordField: true,
               textFieldKey: const ValueKey('password_text_field_key'),
             ),
@@ -103,8 +103,8 @@ class _LoginFormState extends State<LoginForm> {
               onPressed: enableSignIn
                   ? () {
                       BlocProvider.of<LoginCubit>(context).initiateLogin(
-                        _userNameController.text,
-                        _passwordController.text,
+                        _userNameController?.text ?? '',
+                        _passwordController?.text ?? '',
                       );
                     }
                   : null,

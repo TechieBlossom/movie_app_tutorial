@@ -28,10 +28,10 @@ class MovieDetailScreen extends StatefulWidget {
 }
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
-  MovieDetailCubit _movieDetailCubit;
-  CastCubit _castCubit;
-  VideosCubit _videosCubit;
-  FavoriteCubit _favoriteCubit;
+  late MovieDetailCubit _movieDetailCubit;
+  late CastCubit _castCubit;
+  late VideosCubit _videosCubit;
+  late FavoriteCubit _favoriteCubit;
 
   @override
   void initState() {

@@ -13,7 +13,7 @@ class FavoriteScreen extends StatefulWidget {
 }
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
-  FavoriteCubit _favoriteBloc;
+  late FavoriteCubit _favoriteBloc;
 
   @override
   void initState() {
