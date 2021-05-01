@@ -9,7 +9,10 @@ class MoviesResultModel {
     var movies = List<MovieModel>.empty(growable: true);
     if (json['results'] != null) {
       json['results'].forEach((v) {
-        movies.add(MovieModel.fromJson(v));
+        final movieModel = MovieModel.fromJson(v);
+        if (_isValidMovie(movieModel)) {
+          movies.add(movieModel);
+        }
       });
     }
     return MoviesResultModel(movies: movies);
@@ -20,4 +23,11 @@ class MoviesResultModel {
     data['results'] = this.movies.map((v) => v.toJson()).toList();
     return data;
   }
+}
+
+bool _isValidMovie(MovieModel movieModel) {
+  return movieModel.id != -1 &&
+      movieModel.title.isNotEmpty &&
+      movieModel.backdropPath.isNotEmpty &&
+      movieModel.posterPath.isNotEmpty;
 }
