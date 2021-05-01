@@ -12,8 +12,8 @@ class Button extends StatelessWidget {
 
   const Button({
     Key? key,
-    @required this.text,
-    @required this.onPressed,
+    required this.text,
+    required this.onPressed,
     this.isEnabled = true,
   }) : super(key: key);
 

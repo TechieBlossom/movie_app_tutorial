@@ -9,9 +9,9 @@ class NavigationExpandedListItem extends StatelessWidget {
 
   const NavigationExpandedListItem({
     Key? key,
-    @required this.title,
-    @required this.onPressed,
-    @required this.children,
+    required this.title,
+    required this.onPressed,
+    required this.children,
   }) : super(key: key);
 
   @override

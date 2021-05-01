@@ -16,11 +16,11 @@ class GetPlayingNowMock extends Mock implements GetPlayingNow {}
 class GetComingSoonMock extends Mock implements GetComingSoon {}
 
 main() {
-  GetPopularMock getPopularMock;
-  GetPlayingNowMock getPlayingNowMock;
-  GetComingSoonMock getComingSoonMock;
+  late GetPopularMock getPopularMock;
+  late GetPlayingNowMock getPlayingNowMock;
+  late GetComingSoonMock getComingSoonMock;
 
-  MovieTabbedCubit movieTabbedCubit;
+  late MovieTabbedCubit movieTabbedCubit;
 
   setUp(() {
     getPopularMock = GetPopularMock();

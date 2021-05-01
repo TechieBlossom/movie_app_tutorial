@@ -12,13 +12,12 @@ class VideosWidget extends StatelessWidget {
 
   const VideosWidget({
     Key? key,
-    this.videosCubit,
+    required this.videosCubit,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder(
-      cubit: videosCubit,
       builder: (context, state) {
         if (state is VideosLoaded && state.videos.iterator.moveNext()) {
           final _videos = state.videos;

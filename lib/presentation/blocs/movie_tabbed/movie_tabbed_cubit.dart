@@ -24,7 +24,7 @@ class MovieTabbedCubit extends Cubit<MovieTabbedState> {
 
   void movieTabChanged({int currentTabIndex = 0}) async {
     emit(MovieTabLoading(currentTabIndex: currentTabIndex));
-    Either<AppError, List<MovieEntity>> moviesEither;
+    late Either<AppError, List<MovieEntity>> moviesEither;
     switch (currentTabIndex) {
       case 0:
         moviesEither = await getPopular(NoParams());

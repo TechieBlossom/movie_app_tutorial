@@ -9,8 +9,8 @@ class NavigationListItem extends StatelessWidget {
 
   const NavigationListItem({
     Key? key,
-    @required this.title,
-    @required this.onPressed,
+    required this.title,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -43,8 +43,8 @@ class NavigationSubListItem extends StatelessWidget {
 
   const NavigationSubListItem({
     Key? key,
-    @required this.title,
-    @required this.onPressed,
+    required this.title,
+    required this.onPressed,
   }) : super(key: key);
 
   @override

@@ -15,7 +15,7 @@ class BigPoster extends StatelessWidget {
 
   const BigPoster({
     Key? key,
-    @required this.movie,
+    required this.movie,
   }) : super(key: key);
 
   @override

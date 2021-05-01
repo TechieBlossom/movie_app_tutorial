@@ -20,11 +20,11 @@ class LoadingCubitMock extends Mock implements LoadingCubit {}
 class NavigatorObseverMock extends Mock implements NavigatorObserver {}
 
 main() {
-  Widget app;
-  LanguageCubitMock _languageCubitMock;
-  LoginCubitMock _loginCubitMock;
-  LoadingCubitMock _loadingCubitMock;
-  NavigatorObseverMock _observer;
+  late Widget app;
+  late LanguageCubitMock _languageCubitMock;
+  late LoginCubitMock _loginCubitMock;
+  late LoadingCubitMock _loadingCubitMock;
+  late NavigatorObseverMock _observer;
 
   setUp(() {
     _languageCubitMock = LanguageCubitMock();

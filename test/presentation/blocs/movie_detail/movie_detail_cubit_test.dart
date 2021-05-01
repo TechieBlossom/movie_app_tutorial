@@ -30,7 +30,7 @@ void main() {
   var favoriteCubitMock;
   var loadingCubitMock;
 
-  MovieDetailCubit movieDetailCubit;
+  late MovieDetailCubit movieDetailCubit;
 
   setUp(() {
     movieDetailMock = GetMovieDetailMock();
@@ -63,7 +63,7 @@ void main() {
 
     blocTest('should load movie success',
         build: () => movieDetailCubit,
-        act: (bloc) async {
+        act: (MovieDetailCubit bloc) async {
           when(movieDetailMock.call(MovieParams(1)))
               .thenAnswer((_) async => Right(MovieDetailEntity()));
           bloc.loadMovieDetail(1);

@@ -20,10 +20,10 @@ class LoginCubitMock extends Mock implements LoginCubit {}
 class LoadingCubitMock extends Mock implements LoadingCubit {}
 
 main() {
-  Widget app;
-  LanguageCubitMock _languageCubitMock;
-  LoginCubitMock _loginCubitMock;
-  LoadingCubitMock _loadingCubitMock;
+  late Widget app;
+  late LanguageCubitMock _languageCubitMock;
+  late LoginCubitMock _loginCubitMock;
+  late LoadingCubitMock _loadingCubitMock;
 
   setUp(() {
     _languageCubitMock = LanguageCubitMock();
