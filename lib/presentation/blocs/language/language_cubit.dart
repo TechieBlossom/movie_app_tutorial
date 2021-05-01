@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 
 import '../../../common/constants/languages.dart';
 import '../../../domain/entities/language_entity.dart';
@@ -17,8 +16,8 @@ class LanguageCubit extends Cubit<Locale> {
   final UpdateLanguage updateLanguage;
 
   LanguageCubit({
-    @required this.getPreferredLanguage,
-    @required this.updateLanguage,
+    required this.getPreferredLanguage,
+    required this.updateLanguage,
   }) : super(
           Locale(Languages.languages[0].code),
         );

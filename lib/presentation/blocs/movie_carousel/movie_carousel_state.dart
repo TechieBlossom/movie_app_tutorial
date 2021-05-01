@@ -20,7 +20,7 @@ class MovieCarouselLoaded extends MovieCarouselState {
   final int defaultIndex;
 
   const MovieCarouselLoaded({
-    this.movies,
+    required this.movies,
     this.defaultIndex = 0,
   }) : assert(defaultIndex >= 0, 'defaultIndex cannot be less than 0');
 

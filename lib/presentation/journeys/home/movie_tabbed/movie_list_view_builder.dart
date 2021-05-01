@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../common/extensions/size_extensions.dart';
 import '../../../../domain/entities/movie_entity.dart';
 import 'movie_tab_card_widget.dart';
 
