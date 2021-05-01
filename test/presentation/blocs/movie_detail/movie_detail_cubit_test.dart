@@ -64,8 +64,19 @@ void main() {
     blocTest('should load movie success',
         build: () => movieDetailCubit,
         act: (MovieDetailCubit bloc) async {
-          when(movieDetailMock.call(MovieParams(1)))
-              .thenAnswer((_) async => Right(MovieDetailEntity()));
+          when(movieDetailMock.call(MovieParams(1))).thenAnswer(
+            (_) async => Right(
+              MovieDetailEntity(
+                id: 1,
+                backdropPath: '',
+                overview: '',
+                posterPath: '',
+                releaseDate: '',
+                title: '',
+                voteAverage: 3,
+              ),
+            ),
+          );
           bloc.loadMovieDetail(1);
         },
         expect: () => [isA<MovieDetailLoaded>()],

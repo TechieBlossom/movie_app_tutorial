@@ -80,7 +80,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                         vertical: Sizes.dimen_8.h,
                       ),
                       child: Text(
-                        movieDetail.overview,
+                        movieDetail.overview ?? '',
                         style: Theme.of(context).textTheme.bodyText2,
                       ),
                     ),

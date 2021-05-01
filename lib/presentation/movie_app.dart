@@ -87,7 +87,7 @@ class _MovieAppState extends State<MovieApp> {
             ],
             builder: (context, child) {
               return LoadingScreen(
-                screen: child,
+                screen: child!,
               );
             },
             initialRoute: RouteList.initial,

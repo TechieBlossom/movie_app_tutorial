@@ -54,7 +54,7 @@ class SearchMovieCard extends StatelessWidget {
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                   Text(
-                    movie.overview,
+                    movie.overview ?? '',
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.greyCaption,
