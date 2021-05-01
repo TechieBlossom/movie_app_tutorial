@@ -10,7 +10,10 @@ class VideoResultModel {
     var videos = List<VideoModel>.empty(growable: true);
     if (json['results'] != null) {
       json['results'].forEach((v) {
-        videos.add(new VideoModel.fromJson(v));
+        var _videoModel = VideoModel.fromJson(v);
+        if (_isValidVideo(_videoModel)) {
+          videos.add(VideoModel.fromJson(v));
+        }
       });
     }
 
@@ -23,4 +26,10 @@ class VideoResultModel {
     data['results'] = this.videos.map((v) => v.toJson()).toList();
     return data;
   }
+}
+
+bool _isValidVideo(VideoModel videoModel) {
+  return videoModel.key.isNotEmpty &&
+      videoModel.name.isNotEmpty &&
+      videoModel.type.isNotEmpty;
 }

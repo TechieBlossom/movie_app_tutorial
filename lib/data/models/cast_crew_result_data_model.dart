@@ -13,12 +13,18 @@ class CastCrewResultModel {
     var crew = List<Crew>.empty(growable: true);
     if (json['cast'] != null) {
       json['cast'].forEach((v) {
-        cast.add(new CastModel.fromJson(v));
+        final castModel = CastModel.fromJson(v);
+        if (_isValidCast(castModel)) {
+          cast.add(CastModel.fromJson(v));
+        }
       });
     }
     if (json['crew'] != null) {
       json['crew'].forEach((v) {
-        crew.add(new Crew.fromJson(v));
+        final crewModel = Crew.fromJson(v);
+        if (_isValidCrew(crewModel)) {
+          crew.add(crewModel);
+        }
       });
     }
 
@@ -36,6 +42,20 @@ class CastCrewResultModel {
     data['crew'] = this.crew.map((v) => v.toJson()).toList();
     return data;
   }
+}
+
+bool _isValidCast(CastModel castModel) {
+  return castModel.creditId.isNotEmpty &&
+      castModel.character.isNotEmpty &&
+      castModel.name.isNotEmpty &&
+      castModel.posterPath.isNotEmpty;
+}
+
+bool _isValidCrew(Crew crewModel) {
+  return crewModel.creditId.isNotEmpty &&
+      crewModel.department.isNotEmpty &&
+      crewModel.name.isNotEmpty &&
+      crewModel.profilePath.isNotEmpty;
 }
 
 class CastModel extends CastEntity {
@@ -67,13 +87,13 @@ class CastModel extends CastEntity {
   factory CastModel.fromJson(Map<String, dynamic> json) {
     return CastModel(
       castId: json['cast_id'],
-      character: json['character'],
-      creditId: json['credit_id'],
+      character: json['character'] ?? '',
+      creditId: json['credit_id'] ?? '',
       gender: json['gender'],
       id: json['id'],
-      name: json['name'],
+      name: json['name'] ?? '',
       order: json['order'],
-      profilePath: json['profile_path'],
+      profilePath: json['profile_path'] ?? '',
     );
   }
 
@@ -110,13 +130,13 @@ class Crew {
       required this.profilePath});
 
   Crew.fromJson(Map<String, dynamic> json) {
-    creditId = json['credit_id'];
-    department = json['department'];
+    creditId = json['credit_id'] ?? '';
+    department = json['department'] ?? '';
     gender = json['gender'];
     id = json['id'];
     job = json['job'];
-    name = json['name'];
-    profilePath = json['profile_path'];
+    name = json['name'] ?? '';
+    profilePath = json['profile_path'] ?? '';
   }
 
   Map<String, dynamic> toJson() {

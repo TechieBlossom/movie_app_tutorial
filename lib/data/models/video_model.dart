@@ -30,11 +30,11 @@ class VideoModel extends VideoEntity {
       id: json['id'],
       iso6391: json['iso_639_1'],
       iso31661: json['iso_3166_1'],
-      key: json['key'],
-      name: json['name'],
+      key: json['key'] ?? '',
+      name: json['name'] ?? '',
       site: json['site'],
       size: json['size'],
-      type: json['type'],
+      type: json['type'] ?? '',
     );
   }
 
