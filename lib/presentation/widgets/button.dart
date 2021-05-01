@@ -7,7 +7,7 @@ import '../themes/theme_color.dart';
 
 class Button extends StatelessWidget {
   final String text;
-  final Function onPressed;
+  final Function() onPressed;
   final bool isEnabled;
 
   const Button({
@@ -37,7 +37,7 @@ class Button extends StatelessWidget {
       height: Sizes.dimen_16.h,
       child: TextButton(
         key: const ValueKey('main_button'),
-        onPressed: () => isEnabled ? onPressed : null,
+        onPressed: isEnabled ? onPressed : null,
         child: Text(
           text.t(context),
           style: Theme.of(context).textTheme.button,

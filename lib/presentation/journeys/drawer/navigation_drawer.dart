@@ -54,11 +54,7 @@ class NavigationDrawer extends StatelessWidget {
             NavigationExpandedListItem(
               title: TranslationConstants.language.t(context),
               children: Languages.languages.map((e) => e.value).toList(),
-              onPressed: (index) {
-                BlocProvider.of<LanguageCubit>(context).toggleLanguage(
-                  Languages.languages[index],
-                );
-              },
+              onPressed: (index) => _onLanguageSelected(index, context),
             ),
             NavigationListItem(
               title: TranslationConstants.feedback.t(context),
@@ -90,6 +86,12 @@ class NavigationDrawer extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void _onLanguageSelected(int index, BuildContext context) {
+    BlocProvider.of<LanguageCubit>(context).toggleLanguage(
+      Languages.languages[index],
     );
   }
 

@@ -10,7 +10,7 @@ import 'button.dart';
 
 class AppErrorWidget extends StatelessWidget {
   final AppErrorType errorType;
-  final Function onPressed;
+  final Function() onPressed;
 
   const AppErrorWidget({
     Key? key,

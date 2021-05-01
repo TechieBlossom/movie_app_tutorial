@@ -17,7 +17,7 @@ class VideosWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
+    return BlocBuilder<VideosCubit, VideosState>(
       builder: (context, state) {
         if (state is VideosLoaded && state.videos.iterator.moveNext()) {
           final _videos = state.videos;

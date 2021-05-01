@@ -56,7 +56,7 @@ main() {
             isA<MovieTabChanged>(),
           ],
       verify: (MovieTabbedCubit cubit) {
-        verify(getPlayingNowMock.call(any)).called(1);
+        verify(getPlayingNowMock.call(NoParams())).called(1);
       });
 
   blocTest(
@@ -73,7 +73,7 @@ main() {
             isA<MovieTabChanged>(),
           ],
       verify: (MovieTabbedCubit cubit) {
-        verify(getPopularMock.call(any)).called(1);
+        verify(getPopularMock.call(NoParams())).called(1);
       });
 
   blocTest(
@@ -90,7 +90,7 @@ main() {
             isA<MovieTabChanged>(),
           ],
       verify: (MovieTabbedCubit cubit) {
-        verify(getComingSoonMock.call(any)).called(1);
+        verify(getComingSoonMock.call(NoParams())).called(1);
       });
 
   blocTest(
@@ -107,6 +107,6 @@ main() {
             isA<MovieTabLoadError>(),
           ],
       verify: (MovieTabbedCubit cubit) {
-        verify(getComingSoonMock.call(any)).called(1);
+        verify(getComingSoonMock.call(NoParams())).called(1);
       });
 }

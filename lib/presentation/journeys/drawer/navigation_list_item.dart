@@ -5,7 +5,7 @@ import '../../../common/extensions/size_extensions.dart';
 
 class NavigationListItem extends StatelessWidget {
   final String title;
-  final Function onPressed;
+  final Function() onPressed;
 
   const NavigationListItem({
     Key? key,
@@ -16,7 +16,7 @@ class NavigationListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onPressed,
+      onTap: onPressed,
       child: Container(
         decoration: BoxDecoration(
           boxShadow: [
@@ -39,7 +39,7 @@ class NavigationListItem extends StatelessWidget {
 
 class NavigationSubListItem extends StatelessWidget {
   final String title;
-  final Function onPressed;
+  final Function() onPressed;
 
   const NavigationSubListItem({
     Key? key,
@@ -50,7 +50,7 @@ class NavigationSubListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onPressed,
+      onTap: onPressed,
       child: Container(
         decoration: BoxDecoration(
           boxShadow: [

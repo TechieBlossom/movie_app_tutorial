@@ -25,6 +25,7 @@ class MovieTabbedCubit extends Cubit<MovieTabbedState> {
   void movieTabChanged({int currentTabIndex = 0}) async {
     emit(MovieTabLoading(currentTabIndex: currentTabIndex));
     late Either<AppError, List<MovieEntity>> moviesEither;
+    print('before making api call $currentTabIndex');
     switch (currentTabIndex) {
       case 0:
         moviesEither = await getPopular(NoParams());
@@ -42,6 +43,7 @@ class MovieTabbedCubit extends Cubit<MovieTabbedState> {
         errorType: l.appErrorType,
       ),
       (movies) {
+        print('returning state making api call $currentTabIndex');
         return MovieTabChanged(
           currentTabIndex: currentTabIndex,
           movies: movies,

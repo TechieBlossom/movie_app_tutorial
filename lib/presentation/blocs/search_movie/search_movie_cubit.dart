@@ -20,7 +20,7 @@ class SearchMovieCubit extends Cubit<SearchMovieState> {
     required this.loadingCubit,
   }) : super(SearchMovieInitial());
 
-  void searchTermChanged(String searchTerm) async {
+  Future<void> searchTermChanged(String searchTerm) async {
     loadingCubit.show();
     if (searchTerm.length > 2) {
       emit(SearchMovieLoading());

@@ -22,7 +22,7 @@ class LanguageCubit extends Cubit<Locale> {
           Locale(Languages.languages[0].code),
         );
 
-  void toggleLanguage(LanguageEntity language) async {
+  Future<void> toggleLanguage(LanguageEntity language) async {
     await updateLanguage(language.code);
     loadPreferredLanguage();
   }
