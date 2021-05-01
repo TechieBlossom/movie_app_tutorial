@@ -1,3 +1,4 @@
+import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -13,11 +14,11 @@ import 'package:movieapp/presentation/journeys/login/login_form.dart';
 import 'package:movieapp/presentation/journeys/login/login_screen.dart';
 import 'package:movieapp/presentation/widgets/logo.dart';
 
-class LanguageCubitMock extends Mock implements LanguageCubit {}
+class LanguageCubitMock extends MockCubit<Locale> implements LanguageCubit {}
 
-class LoginCubitMock extends Mock implements LoginCubit {}
+class LoginCubitMock extends MockCubit<LoginState> implements LoginCubit {}
 
-class LoadingCubitMock extends Mock implements LoadingCubit {}
+class LoadingCubitMock extends MockCubit<bool> implements LoadingCubit {}
 
 main() {
   late Widget app;

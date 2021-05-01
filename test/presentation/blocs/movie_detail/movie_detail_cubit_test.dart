@@ -14,14 +14,14 @@ import 'package:movieapp/presentation/blocs/videos/videos_cubit.dart';
 
 class GetMovieDetailMock extends Mock implements GetMovieDetail {}
 
-class CastCubitMock extends MockBloc<CastState> implements CastCubit {}
+class CastCubitMock extends MockCubit<CastState> implements CastCubit {}
 
-class VideosCubitMock extends MockBloc<VideosState> implements VideosCubit {}
+class VideosCubitMock extends MockCubit<VideosState> implements VideosCubit {}
 
-class FavoriteCubitMock extends MockBloc<FavoriteState>
+class FavoriteCubitMock extends MockCubit<FavoriteState>
     implements FavoriteCubit {}
 
-class LoadingCubitMock extends MockBloc<bool> implements LoadingCubit {}
+class LoadingCubitMock extends MockCubit<bool> implements LoadingCubit {}
 
 void main() {
   var movieDetailMock;
