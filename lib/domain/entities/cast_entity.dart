@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 
 class CastEntity extends Equatable {
   final String creditId;
@@ -8,10 +7,10 @@ class CastEntity extends Equatable {
   final String character;
 
   CastEntity({
-    @required this.creditId,
-    @required this.name,
-    @required this.posterPath,
-    @required this.character,
+    required this.creditId,
+    required this.name,
+    required this.posterPath,
+    required this.character,
   });
 
   @override
