@@ -21,7 +21,7 @@ class MovieListViewBuilder extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         separatorBuilder: (context, index) {
           return SizedBox(
-            width: 14.w,
+            width: Sizes.dimen_14.w,
           );
         },
         itemBuilder: (context, index) {

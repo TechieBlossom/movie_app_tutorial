@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 import 'package:movieapp/common/constants/languages.dart';
 import 'package:movieapp/common/screenutil/screenutil.dart';
 import 'package:movieapp/presentation/app_localizations.dart';

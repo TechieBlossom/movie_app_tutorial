@@ -42,7 +42,7 @@ class CastWidget extends StatelessWidget {
                         Expanded(
                           child: ClipRRect(
                             borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(8.w),
+                              top: Radius.circular(Sizes.dimen_8.w),
                             ),
                             child: CachedNetworkImage(
                               height: Sizes.dimen_100.h,
