@@ -1,10 +1,4 @@
 
-# Complete Movie App — Pilot (1)
-
-
-
-Hey, Glad that you’re here.
-
 I am bringing a series of videos and articles for you to teach you how to build an **Industry Standard Flutter Application** from scratch. I am also putting up companion articles. 
 
 In this series, you’ll learn basic as well advanced topics in Flutter. At the end of this series, you’ll have successfully built an industry standard application with **very good UI** and a **scalable code-base** with some excellent coding practices.
