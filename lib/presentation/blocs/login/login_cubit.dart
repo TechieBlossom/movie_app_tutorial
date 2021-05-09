@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/constants/translation_constants.dart';
@@ -20,9 +19,9 @@ class LoginCubit extends Cubit<LoginState> {
   final LoadingCubit loadingCubit;
 
   LoginCubit({
-    @required this.loginUser,
-    @required this.logoutUser,
-    @required this.loadingCubit,
+    required this.loginUser,
+    required this.logoutUser,
+    required this.loadingCubit,
   }) : super(LoginInitial());
 
   void initiateLogin(String username, String password) async {

@@ -4,15 +4,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movieapp/common/constants/languages.dart';
-import 'package:movieapp/common/constants/translation_constants.dart';
 import 'package:movieapp/common/screenutil/screenutil.dart';
 import 'package:movieapp/presentation/app_localizations.dart';
 import 'package:movieapp/presentation/blocs/language/language_cubit.dart';
 import 'package:movieapp/presentation/blocs/loading/loading_cubit.dart';
 import 'package:movieapp/presentation/blocs/login/login_cubit.dart';
 import 'package:movieapp/presentation/journeys/login/login_form.dart';
-import 'package:movieapp/presentation/journeys/login/login_screen.dart';
-import 'package:movieapp/presentation/widgets/logo.dart';
 
 class LanguageCubitMock extends Mock implements LanguageCubit {}
 
@@ -22,12 +19,18 @@ class LoadingCubitMock extends Mock implements LoadingCubit {}
 
 class NavigatorObseverMock extends Mock implements NavigatorObserver {}
 
+class MockRoute extends Route {
+  final RouteSettings settings;
+
+  MockRoute(this.settings) : super(settings: settings);
+}
+
 main() {
-  Widget app;
-  LanguageCubitMock _languageCubitMock;
-  LoginCubitMock _loginCubitMock;
-  LoadingCubitMock _loadingCubitMock;
-  NavigatorObseverMock _observer;
+  late Widget app;
+  late LanguageCubitMock _languageCubitMock;
+  late LoginCubitMock _loginCubitMock;
+  late LoadingCubitMock _loadingCubitMock;
+  late NavigatorObseverMock _observer;
 
   setUp(() {
     _languageCubitMock = LanguageCubitMock();
@@ -123,7 +126,8 @@ main() {
 
     expect(find.text('Session denied'), findsNothing);
 
-    verify(_observer.didPush(any, any));
+    verify(_observer.didPush(MockRoute(RouteSettings(name: '/')),
+        MockRoute(RouteSettings(name: '/home'))));
     verify(_loginCubitMock.initiateLogin('username', 'password')).called(1);
   });
 }

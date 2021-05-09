@@ -14,14 +14,14 @@ import 'package:movieapp/presentation/blocs/videos/videos_cubit.dart';
 
 class GetMovieDetailMock extends Mock implements GetMovieDetail {}
 
-class CastCubitMock extends MockBloc<CastState> implements CastCubit {}
+class CastCubitMock extends MockCubit<CastState> implements CastCubit {}
 
-class VideosCubitMock extends MockBloc<VideosState> implements VideosCubit {}
+class VideosCubitMock extends MockCubit<VideosState> implements VideosCubit {}
 
-class FavoriteCubitMock extends MockBloc<FavoriteState>
+class FavoriteCubitMock extends MockCubit<FavoriteState>
     implements FavoriteCubit {}
 
-class LoadingCubitMock extends MockBloc<bool> implements LoadingCubit {}
+class LoadingCubitMock extends MockCubit<bool> implements LoadingCubit {}
 
 void main() {
   var movieDetailMock;
@@ -30,7 +30,7 @@ void main() {
   var favoriteCubitMock;
   var loadingCubitMock;
 
-  MovieDetailCubit movieDetailCubit;
+  late MovieDetailCubit movieDetailCubit;
 
   setUp(() {
     movieDetailMock = GetMovieDetailMock();
@@ -63,12 +63,23 @@ void main() {
 
     blocTest('should load movie success',
         build: () => movieDetailCubit,
-        act: (bloc) async {
-          when(movieDetailMock.call(MovieParams(1)))
-              .thenAnswer((_) async => Right(MovieDetailEntity()));
+        act: (MovieDetailCubit bloc) async {
+          when(movieDetailMock.call(MovieParams(1))).thenAnswer(
+            (_) async => Right(
+              MovieDetailEntity(
+                id: 1,
+                backdropPath: '',
+                overview: '',
+                posterPath: '',
+                releaseDate: '',
+                title: '',
+                voteAverage: 3,
+              ),
+            ),
+          );
           bloc.loadMovieDetail(1);
         },
-        expect: [isA<MovieDetailLoaded>()],
+        expect: () => [isA<MovieDetailLoaded>()],
         verify: (bloc) {
           verify(loadingCubitMock.show()).called(1);
           verify(castCubitMock.loadCast(1)).called(1);
@@ -79,12 +90,12 @@ void main() {
 
     blocTest('should load movie failure',
         build: () => movieDetailCubit,
-        act: (bloc) async {
+        act: (MovieDetailCubit bloc) async {
           when(movieDetailMock.call(MovieParams(1)))
               .thenAnswer((_) async => Left(AppError(AppErrorType.api)));
           bloc.loadMovieDetail(1);
         },
-        expect: [isA<MovieDetailError>()],
+        expect: () => [isA<MovieDetailError>()],
         verify: (bloc) {
           verify(loadingCubitMock.show()).called(1);
           verify(castCubitMock.loadCast(1)).called(1);

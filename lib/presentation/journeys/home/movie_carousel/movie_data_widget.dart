@@ -7,7 +7,7 @@ import '../../../blocs/movie_backdrop/movie_backdrop_cubit.dart';
 class MovieDataWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MovieBackdropCubit, MovieEntity>(
+    return BlocBuilder<MovieBackdropCubit, MovieEntity?>(
       builder: (context, movie) {
         return Text(
           movie?.title ?? '',

@@ -1,10 +1,10 @@
 class RequestTokenModel {
   final bool success;
-  final String requestToken;
-  final String expiresAt;
+  late final String? requestToken;
+  late final String? expiresAt;
 
   RequestTokenModel({
-    this.success,
+    this.success = false,
     this.requestToken,
     this.expiresAt,
   });

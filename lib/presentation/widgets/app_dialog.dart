@@ -9,13 +9,13 @@ import 'button.dart';
 
 class AppDialog extends StatelessWidget {
   final String title, description, buttonText;
-  final Widget image;
+  final Widget? image;
 
   const AppDialog({
-    Key key,
-    @required this.title,
-    @required this.description,
-    @required this.buttonText,
+    Key? key,
+    required this.title,
+    required this.description,
+    required this.buttonText,
     this.image,
   }) : super(key: key);
 
@@ -59,7 +59,7 @@ class AppDialog extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyText2,
               ),
             ),
-            if (image != null) image,
+            if (image != null) image!,
             Button(
               onPressed: () {
                 Navigator.of(context).pop();

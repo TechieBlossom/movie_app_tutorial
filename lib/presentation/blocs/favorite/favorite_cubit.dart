@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/entities/app_error.dart';
@@ -22,10 +21,10 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   final CheckIfFavoriteMovie checkIfFavoriteMovie;
 
   FavoriteCubit({
-    @required this.saveMovie,
-    @required this.getFavoriteMovies,
-    @required this.deleteFavoriteMovie,
-    @required this.checkIfFavoriteMovie,
+    required this.saveMovie,
+    required this.getFavoriteMovies,
+    required this.deleteFavoriteMovie,
+    required this.checkIfFavoriteMovie,
   }) : super(FavoriteInitial());
 
   void toggleFavoriteMovie(MovieEntity movieEntity, bool isFavorite) async {

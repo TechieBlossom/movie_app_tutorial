@@ -2,35 +2,35 @@ import '../../domain/entities/movie_entity.dart';
 
 class MovieModel extends MovieEntity {
   final int id;
-  final bool video;
-  final int voteCount;
-  final double voteAverage;
+  final bool? video;
+  final int? voteCount;
+  final double? voteAverage;
   final String title;
-  final String releaseDate;
-  final String originalLanguage;
-  final String originalTitle;
-  final List<int> genreIds;
+  final String? releaseDate;
+  final String? originalLanguage;
+  final String? originalTitle;
+  final List<int>? genreIds;
   final String backdropPath;
-  final bool adult;
-  final String overview;
+  final bool? adult;
+  final String? overview;
   final String posterPath;
-  final double popularity;
-  final String mediaType;
+  final double? popularity;
+  final String? mediaType;
 
   MovieModel({
-    this.id,
+    required this.id,
     this.video,
     this.voteCount,
     this.voteAverage,
-    this.title,
+    required this.title,
     this.releaseDate,
     this.originalLanguage,
     this.originalTitle,
     this.genreIds,
-    this.backdropPath,
+    required this.backdropPath,
     this.adult,
     this.overview,
-    this.posterPath,
+    required this.posterPath,
     this.popularity,
     this.mediaType,
   }) : super(
@@ -48,14 +48,14 @@ class MovieModel extends MovieEntity {
       popularity: json['popularity']?.toDouble() ?? 0.0,
       voteCount: json['vote_count'],
       video: json['video'],
-      posterPath: json['poster_path'],
-      id: json['id'],
+      posterPath: json['poster_path'] ?? '',
+      id: json['id'] ?? -1,
       adult: json['adult'],
-      backdropPath: json['backdrop_path'],
+      backdropPath: json['backdrop_path'] ?? '',
       originalLanguage: json['original_language'],
       originalTitle: json['original_title'],
       genreIds: json['genre_ids'].cast<int>(),
-      title: json['title'],
+      title: json['title'] ?? '',
       voteAverage: json['vote_average']?.toDouble() ?? 0.0,
       overview: json['overview'],
       releaseDate: json['release_date'],

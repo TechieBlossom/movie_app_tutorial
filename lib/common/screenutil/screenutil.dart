@@ -1,23 +1,23 @@
 import 'dart:ui';
 
 class ScreenUtil {
-  static ScreenUtil _instance;
+  static late ScreenUtil _instance;
   static const int defaultWidth = 414;
   static const int defaultHeight = 896;
 
   /// Size of the phone in UI Design , px
-  num uiWidthPx;
-  num uiHeightPx;
+  late num uiWidthPx;
+  late num uiHeightPx;
 
   /// allowFontScaling Specifies whether fonts should scale to respect Text Size accessibility settings. The default is false.
-  bool allowFontScaling;
+  late bool allowFontScaling;
 
-  static double _screenWidth;
-  static double _screenHeight;
-  static double _pixelRatio;
-  static double _statusBarHeight;
-  static double _bottomBarHeight;
-  static double _textScaleFactor;
+  static late double _screenWidth;
+  static late double _screenHeight;
+  static late double _pixelRatio;
+  static late double _statusBarHeight;
+  static late double _bottomBarHeight;
+  static late double _textScaleFactor;
 
   ScreenUtil._();
 
@@ -29,9 +29,7 @@ class ScreenUtil {
       {num width = defaultWidth,
       num height = defaultHeight,
       bool allowFontScaling = false}) {
-    if (_instance == null) {
-      _instance = ScreenUtil._();
-    }
+    _instance = ScreenUtil._();
     _instance.uiWidthPx = width;
     _instance.uiHeightPx = height;
     _instance.allowFontScaling = allowFontScaling;
@@ -82,26 +80,26 @@ class ScreenUtil {
   /// Adapted to the device width of the UI Design.
   /// Height can also be adapted according to this to ensure no deformation ,
   /// if you want a square
-  num setWidth(num width) => width * scaleWidth;
+  double setWidth(num width) => width * scaleWidth;
 
   /// Height function
   /// Highly adaptable to the device according to UI Design
   /// It is recommended to use this method to achieve a high degree of adaptation
   /// when it is found that one screen in the UI design
   /// does not match the current style effect, or if there is a difference in shape.
-  num setHeight(num height) => height * scaleHeight;
+  double setHeight(num height) => height * scaleHeight;
 
   ///FontSize function
   ///@param [fontSize] UI in px.
   ///Font size adaptation method
   ///@param [fontSize] The size of the font on the UI design, in px.
   ///@param [allowFontScaling]
-  num setSp(num fontSize, {bool allowFontScalingSelf}) =>
-      allowFontScalingSelf == null
-          ? (allowFontScaling
+  double setSp(num fontSize, {bool allowFontScalingSelf = false}) =>
+      allowFontScalingSelf
+          ? (allowFontScalingSelf
               ? (fontSize * scaleText)
               : ((fontSize * scaleText) / _textScaleFactor))
-          : (allowFontScalingSelf
+          : (allowFontScaling
               ? (fontSize * scaleText)
               : ((fontSize * scaleText) / _textScaleFactor));
 }

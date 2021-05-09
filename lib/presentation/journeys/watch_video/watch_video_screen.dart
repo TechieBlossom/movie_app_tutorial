@@ -13,8 +13,8 @@ class WatchVideoScreen extends StatefulWidget {
   final WatchVideoArguments watchVideoArguments;
 
   const WatchVideoScreen({
-    Key key,
-    @required this.watchVideoArguments,
+    Key? key,
+    required this.watchVideoArguments,
   }) : super(key: key);
 
   @override
@@ -22,8 +22,8 @@ class WatchVideoScreen extends StatefulWidget {
 }
 
 class _WatchVideoScreenState extends State<WatchVideoScreen> {
-  List<VideoEntity> _videos;
-  YoutubePlayerController _controller;
+  late List<VideoEntity> _videos;
+  late YoutubePlayerController? _controller;
 
   @override
   void initState() {
@@ -54,7 +54,14 @@ class _WatchVideoScreenState extends State<WatchVideoScreen> {
       ),
       body: YoutubePlayerBuilder(
         player: YoutubePlayer(
-          controller: _controller,
+          controller: _controller ??
+              YoutubePlayerController(
+                initialVideoId: _videos[0].key,
+                flags: YoutubePlayerFlags(
+                  autoPlay: true,
+                  mute: true,
+                ),
+              ),
           aspectRatio: 16 / 9,
           showVideoProgressIndicator: true,
           progressIndicatorColor: Colors.amber,
@@ -73,15 +80,15 @@ class _WatchVideoScreenState extends State<WatchVideoScreen> {
                     children: [
                       for (int i = 0; i < _videos.length; i++)
                         Container(
-                          height: 60.h,
+                          height: Sizes.dimen_60.h,
                           padding:
                               EdgeInsets.symmetric(vertical: Sizes.dimen_8.h),
                           child: Row(
                             children: <Widget>[
                               GestureDetector(
                                 onTap: () {
-                                  _controller.load(_videos[i].key);
-                                  _controller.play();
+                                  _controller?.load(_videos[i].key);
+                                  _controller?.play();
                                 },
                                 child: CachedNetworkImage(
                                   width: Sizes.dimen_200.w,
@@ -93,8 +100,8 @@ class _WatchVideoScreenState extends State<WatchVideoScreen> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 8.w),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: Sizes.dimen_8.w),
                                   child: Text(
                                     _videos[i].title,
                                     style:

@@ -1,24 +1,24 @@
 import '../../domain/entities/video_entity.dart';
 
 class VideoModel extends VideoEntity {
-  final String id;
-  final String iso6391;
-  final String iso31661;
+  final String? id;
+  final String? iso6391;
+  final String? iso31661;
   final String key;
   final String name;
-  final String site;
-  final int size;
+  final String? site;
+  final int? size;
   final String type;
 
   VideoModel({
     this.id,
     this.iso6391,
     this.iso31661,
-    this.key,
-    this.name,
+    required this.key,
+    required this.name,
     this.site,
     this.size,
-    this.type,
+    required this.type,
   }) : super(
           title: name,
           key: key,
@@ -30,11 +30,11 @@ class VideoModel extends VideoEntity {
       id: json['id'],
       iso6391: json['iso_639_1'],
       iso31661: json['iso_3166_1'],
-      key: json['key'],
-      name: json['name'],
+      key: json['key'] ?? '',
+      name: json['name'] ?? '',
       site: json['site'],
       size: json['size'],
-      type: json['type'],
+      type: json['type'] ?? '',
     );
   }
 

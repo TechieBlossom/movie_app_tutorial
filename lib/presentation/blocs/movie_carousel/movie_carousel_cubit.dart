@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/entities/app_error.dart';
@@ -18,9 +17,9 @@ class MovieCarouselCubit extends Cubit<MovieCarouselState> {
   final LoadingCubit loadingCubit;
 
   MovieCarouselCubit({
-    @required this.getTrending,
-    @required this.movieBackdropCubit,
-    @required this.loadingCubit,
+    required this.getTrending,
+    required this.movieBackdropCubit,
+    required this.loadingCubit,
   }) : super(MovieCarouselInitial());
 
   void loadCarousel({int defaultIndex = 0}) async {

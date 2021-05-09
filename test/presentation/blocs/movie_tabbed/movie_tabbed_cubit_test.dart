@@ -16,11 +16,11 @@ class GetPlayingNowMock extends Mock implements GetPlayingNow {}
 class GetComingSoonMock extends Mock implements GetComingSoon {}
 
 main() {
-  GetPopularMock getPopularMock;
-  GetPlayingNowMock getPlayingNowMock;
-  GetComingSoonMock getComingSoonMock;
+  late GetPopularMock getPopularMock;
+  late GetPlayingNowMock getPlayingNowMock;
+  late GetComingSoonMock getComingSoonMock;
 
-  MovieTabbedCubit movieTabbedCubit;
+  late MovieTabbedCubit movieTabbedCubit;
 
   setUp(() {
     getPopularMock = GetPopularMock();
@@ -51,12 +51,12 @@ main() {
 
         cubit.movieTabChanged(currentTabIndex: 1);
       },
-      expect: [
-        isA<MovieTabLoading>(),
-        isA<MovieTabChanged>(),
-      ],
+      expect: () => [
+            isA<MovieTabLoading>(),
+            isA<MovieTabChanged>(),
+          ],
       verify: (MovieTabbedCubit cubit) {
-        verify(getPlayingNowMock.call(any)).called(1);
+        verify(getPlayingNowMock.call(NoParams())).called(1);
       });
 
   blocTest(
@@ -68,12 +68,12 @@ main() {
 
         cubit.movieTabChanged(currentTabIndex: 0);
       },
-      expect: [
-        isA<MovieTabLoading>(),
-        isA<MovieTabChanged>(),
-      ],
+      expect: () => [
+            isA<MovieTabLoading>(),
+            isA<MovieTabChanged>(),
+          ],
       verify: (MovieTabbedCubit cubit) {
-        verify(getPopularMock.call(any)).called(1);
+        verify(getPopularMock.call(NoParams())).called(1);
       });
 
   blocTest(
@@ -85,12 +85,12 @@ main() {
 
         cubit.movieTabChanged(currentTabIndex: 2);
       },
-      expect: [
-        isA<MovieTabLoading>(),
-        isA<MovieTabChanged>(),
-      ],
+      expect: () => [
+            isA<MovieTabLoading>(),
+            isA<MovieTabChanged>(),
+          ],
       verify: (MovieTabbedCubit cubit) {
-        verify(getComingSoonMock.call(any)).called(1);
+        verify(getComingSoonMock.call(NoParams())).called(1);
       });
 
   blocTest(
@@ -102,11 +102,11 @@ main() {
 
         cubit.movieTabChanged(currentTabIndex: 2);
       },
-      expect: [
-        isA<MovieTabLoading>(),
-        isA<MovieTabLoadError>(),
-      ],
+      expect: () => [
+            isA<MovieTabLoading>(),
+            isA<MovieTabLoadError>(),
+          ],
       verify: (MovieTabbedCubit cubit) {
-        verify(getComingSoonMock.call(any)).called(1);
+        verify(getComingSoonMock.call(NoParams())).called(1);
       });
 }

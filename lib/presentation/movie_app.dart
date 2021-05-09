@@ -24,9 +24,9 @@ class MovieApp extends StatefulWidget {
 
 class _MovieAppState extends State<MovieApp> {
   final _navigatorKey = GlobalKey<NavigatorState>();
-  LanguageCubit _languageCubit;
-  LoginCubit _loginBloc;
-  LoadingCubit _loadingCubit;
+  late LanguageCubit _languageCubit;
+  late LoginCubit _loginBloc;
+  late LoadingCubit _loadingCubit;
 
   @override
   void initState() {
@@ -39,9 +39,9 @@ class _MovieAppState extends State<MovieApp> {
 
   @override
   void dispose() {
-    _languageCubit?.close();
-    _loginBloc?.close();
-    _loadingCubit?.close();
+    _languageCubit.close();
+    _loginBloc.close();
+    _loadingCubit.close();
     super.dispose();
   }
 
@@ -87,15 +87,15 @@ class _MovieAppState extends State<MovieApp> {
             ],
             builder: (context, child) {
               return LoadingScreen(
-                screen: child,
+                screen: child!,
               );
             },
             initialRoute: RouteList.initial,
             onGenerateRoute: (RouteSettings settings) {
               final routes = Routes.getRoutes(settings);
-              final WidgetBuilder builder = routes[settings.name];
+              final WidgetBuilder? builder = routes[settings.name];
               return FadePageRouteBuilder(
-                builder: builder,
+                builder: builder!,
                 settings: settings,
               );
             },

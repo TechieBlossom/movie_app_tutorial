@@ -9,8 +9,8 @@ class FavoriteMovieGridView extends StatelessWidget {
   final List<MovieEntity> movies;
 
   const FavoriteMovieGridView({
-    Key key,
-    @required this.movies,
+    Key? key,
+    required this.movies,
   }) : super(key: key);
 
   @override

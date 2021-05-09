@@ -10,27 +10,29 @@ class ThemeText {
 
   static TextTheme get _poppinsTextTheme => GoogleFonts.poppinsTextTheme();
 
-  static TextStyle get _whiteHeadline6 => _poppinsTextTheme.headline6.copyWith(
+  static TextStyle? get _whiteHeadline6 =>
+      _poppinsTextTheme.headline6?.copyWith(
         fontSize: Sizes.dimen_20.sp,
         color: Colors.white,
       );
 
-  static TextStyle get _whiteHeadline5 => _poppinsTextTheme.headline5.copyWith(
+  static TextStyle? get _whiteHeadline5 =>
+      _poppinsTextTheme.headline5?.copyWith(
         fontSize: Sizes.dimen_24.sp,
         color: Colors.white,
       );
 
-  static TextStyle get whiteSubtitle1 => _poppinsTextTheme.subtitle1.copyWith(
+  static TextStyle? get whiteSubtitle1 => _poppinsTextTheme.subtitle1?.copyWith(
         fontSize: Sizes.dimen_16.sp,
         color: Colors.white,
       );
 
-  static TextStyle get _whiteButton => _poppinsTextTheme.button.copyWith(
+  static TextStyle? get _whiteButton => _poppinsTextTheme.button?.copyWith(
         fontSize: Sizes.dimen_14.sp,
         color: Colors.white,
       );
 
-  static TextStyle get whiteBodyText2 => _poppinsTextTheme.bodyText2.copyWith(
+  static TextStyle? get whiteBodyText2 => _poppinsTextTheme.bodyText2?.copyWith(
         color: Colors.white,
         fontSize: Sizes.dimen_14.sp,
         wordSpacing: 0.25,
@@ -48,29 +50,29 @@ class ThemeText {
 }
 
 extension ThemeTextExtension on TextTheme {
-  TextStyle get royalBlueSubtitle1 => subtitle1.copyWith(
+  TextStyle? get royalBlueSubtitle1 => subtitle1?.copyWith(
         color: AppColor.royalBlue,
         fontWeight: FontWeight.w600,
       );
 
-  TextStyle get greySubtitle1 => subtitle1.copyWith(
+  TextStyle? get greySubtitle1 => subtitle1?.copyWith(
         color: Colors.grey,
       );
 
-  TextStyle get violetHeadline6 => headline6.copyWith(
+  TextStyle? get violetHeadline6 => headline6?.copyWith(
         color: AppColor.violet,
       );
 
-  TextStyle get vulcanBodyText2 => bodyText2.copyWith(
+  TextStyle? get vulcanBodyText2 => bodyText2?.copyWith(
         color: AppColor.vulcan,
         fontWeight: FontWeight.w600,
       );
 
-  TextStyle get greyCaption => caption.copyWith(
+  TextStyle? get greyCaption => caption?.copyWith(
         color: Colors.grey,
       );
 
-  TextStyle get orangeSubtitle1 => subtitle1.copyWith(
+  TextStyle? get orangeSubtitle1 => subtitle1?.copyWith(
         color: Colors.orangeAccent,
       );
 }

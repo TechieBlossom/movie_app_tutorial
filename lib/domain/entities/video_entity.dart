@@ -1,11 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 class VideoEntity extends Equatable {
-  final String title, key, type;
+  final String title, key;
+  late final String? type;
 
   VideoEntity({
-    this.title,
-    this.key,
+    required this.title,
+    required this.key,
     this.type,
   });
 

@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:movieapp/common/constants/languages.dart';
 import 'package:movieapp/presentation/app_localizations.dart';
-import 'package:movieapp/presentation/themes/theme_color.dart';
-import 'package:movieapp/presentation/themes/theme_text.dart';
 
 materialWrapperWithBlocs(
   Widget child,

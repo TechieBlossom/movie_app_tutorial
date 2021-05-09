@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/entities/app_error.dart';
@@ -15,7 +14,7 @@ class VideosCubit extends Cubit<VideosState> {
   final GetVideos getVideos;
 
   VideosCubit({
-    @required this.getVideos,
+    required this.getVideos,
   }) : super(VideosInitial());
 
   void loadVideos(int movieId) async {
