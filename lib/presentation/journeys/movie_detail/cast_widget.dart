@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movieapp/presentation/blocs/theme/theme_cubit.dart';
 
 import '../../../common/constants/size_constants.dart';
 import '../../../common/extensions/size_extensions.dart';
@@ -61,7 +62,10 @@ class CastWidget extends StatelessWidget {
                             castEntity.name,
                             overflow: TextOverflow.fade,
                             maxLines: 1,
-                            style: Theme.of(context).textTheme.vulcanBodyText2,
+                            style: context.read<ThemeCubit>().state ==
+                                    Themes.dark
+                                ? Theme.of(context).textTheme.vulcanBodyText2
+                                : Theme.of(context).textTheme.whiteBodyText2,
                           ),
                         ),
                         Padding(

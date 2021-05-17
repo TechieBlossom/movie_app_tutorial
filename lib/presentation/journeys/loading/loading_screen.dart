@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../common/constants/size_constants.dart';
 import '../../../common/extensions/size_extensions.dart';
 import '../../blocs/loading/loading_cubit.dart';
-import '../../themes/theme_color.dart';
 import 'loading_circle.dart';
 
 class LoadingScreen extends StatelessWidget {
@@ -22,8 +21,8 @@ class LoadingScreen extends StatelessWidget {
             screen,
             if (shouldShow)
               Container(
-                decoration:
-                    BoxDecoration(color: AppColor.vulcan.withOpacity(0.8)),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor.withOpacity(0.7)),
                 child: Center(
                   child: LoadingCircle(
                     size: Sizes.dimen_200.w,

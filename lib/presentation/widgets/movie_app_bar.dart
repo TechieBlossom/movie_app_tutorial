@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:movieapp/presentation/blocs/theme/theme_cubit.dart';
+import 'package:movieapp/presentation/themes/theme_color.dart';
 
 import '../../common/constants/size_constants.dart';
 import '../../common/extensions/size_extensions.dart';
@@ -27,13 +29,12 @@ class MovieAppBar extends StatelessWidget {
             icon: SvgPicture.asset(
               'assets/svgs/menu.svg',
               height: Sizes.dimen_12.h,
+              color: context.read<ThemeCubit>().state == Themes.dark
+                  ? Colors.white
+                  : AppColor.vulcan,
             ),
           ),
-          Expanded(
-            child: const Logo(
-              height: Sizes.dimen_14,
-            ),
-          ),
+          Expanded(child: Logo(height: Sizes.dimen_14)),
           IconButton(
             onPressed: () {
               showSearch(
@@ -45,7 +46,9 @@ class MovieAppBar extends StatelessWidget {
             },
             icon: Icon(
               Icons.search,
-              color: Colors.white,
+              color: context.read<ThemeCubit>().state == Themes.dark
+                  ? Colors.white
+                  : AppColor.vulcan,
               size: Sizes.dimen_12.h,
             ),
           ),

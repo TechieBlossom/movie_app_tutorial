@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movieapp/presentation/blocs/theme/theme_cubit.dart';
+import 'package:movieapp/presentation/themes/theme_color.dart';
 import 'package:wiredash/wiredash.dart';
 
 import '../../../common/constants/languages.dart';
@@ -83,6 +85,24 @@ class NavigationDrawer extends StatelessWidget {
                 },
               ),
             ),
+            Spacer(),
+            BlocBuilder<ThemeCubit, Themes>(builder: (context, theme) {
+              return Align(
+                alignment: Alignment.center,
+                child: IconButton(
+                  onPressed: () => context.read<ThemeCubit>().toggleTheme(),
+                  icon: Icon(
+                    theme == Themes.dark
+                        ? Icons.brightness_4_sharp
+                        : Icons.brightness_7_sharp,
+                    color: context.read<ThemeCubit>().state == Themes.dark
+                        ? Colors.white
+                        : AppColor.vulcan,
+                    size: Sizes.dimen_40.w,
+                  ),
+                ),
+              );
+            }),
           ],
         ),
       ),

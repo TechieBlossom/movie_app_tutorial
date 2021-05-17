@@ -1,5 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
+import 'package:movieapp/domain/usecases/get_preferred_theme.dart';
+import 'package:movieapp/domain/usecases/update_theme.dart';
+import 'package:movieapp/presentation/blocs/theme/theme_cubit.dart';
 
 import '../data/core/api_client.dart';
 import '../data/data_sources/authentication_local_data_source.dart';
@@ -103,6 +106,12 @@ Future init() async {
       () => GetPreferredLanguage(getItInstance()));
 
   getItInstance
+      .registerLazySingleton<UpdateTheme>(() => UpdateTheme(getItInstance()));
+
+  getItInstance.registerLazySingleton<GetPreferredTheme>(
+      () => GetPreferredTheme(getItInstance()));
+
+  getItInstance
       .registerLazySingleton<LoginUser>(() => LoginUser(getItInstance()));
 
   getItInstance
@@ -187,4 +196,8 @@ Future init() async {
       ));
 
   getItInstance.registerSingleton<LoadingCubit>(LoadingCubit());
+  getItInstance.registerSingleton<ThemeCubit>(ThemeCubit(
+    getPreferredTheme: getItInstance(),
+    updateTheme: getItInstance(),
+  ));
 }
