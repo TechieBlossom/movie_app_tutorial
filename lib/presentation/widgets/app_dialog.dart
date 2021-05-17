@@ -4,7 +4,6 @@ import '../../common/constants/size_constants.dart';
 import '../../common/constants/translation_constants.dart';
 import '../../common/extensions/size_extensions.dart';
 import '../../common/extensions/string_extensions.dart';
-import '../themes/theme_color.dart';
 import 'button.dart';
 
 class AppDialog extends StatelessWidget {
@@ -22,7 +21,7 @@ class AppDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: AppColor.vulcan,
+      backgroundColor: Theme.of(context).primaryColor,
       elevation: Sizes.dimen_32,
       insetPadding: EdgeInsets.all(Sizes.dimen_32.w),
       shape: RoundedRectangleBorder(
@@ -39,7 +38,7 @@ class AppDialog extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: AppColor.vulcan,
+              color: Theme.of(context).primaryColor,
               blurRadius: Sizes.dimen_16,
             ),
           ],

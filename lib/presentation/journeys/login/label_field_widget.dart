@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../common/constants/size_constants.dart';
 import '../../../common/extensions/size_extensions.dart';
-import '../../themes/theme_text.dart';
 
 class LabelFieldWidget extends StatelessWidget {
   final Key? textFieldKey;
@@ -10,17 +9,6 @@ class LabelFieldWidget extends StatelessWidget {
   final String hintText;
   final bool isPasswordField;
   final TextEditingController controller;
-  final UnderlineInputBorder _enabledBorder = const UnderlineInputBorder(
-    borderSide: BorderSide(
-      color: Colors.grey,
-    ),
-  );
-
-  final UnderlineInputBorder _focusedBorder = const UnderlineInputBorder(
-    borderSide: BorderSide(
-      color: Colors.white,
-    ),
-  );
 
   const LabelFieldWidget({
     Key? key,
@@ -49,12 +37,7 @@ class LabelFieldWidget extends StatelessWidget {
             obscuringCharacter: '*',
             controller: controller,
             style: Theme.of(context).textTheme.headline6,
-            decoration: InputDecoration(
-              hintText: hintText,
-              hintStyle: Theme.of(context).textTheme.greySubtitle1,
-              focusedBorder: _focusedBorder,
-              enabledBorder: _enabledBorder,
-            ),
+            decoration: InputDecoration(hintText: hintText),
           ),
         ],
       ),
