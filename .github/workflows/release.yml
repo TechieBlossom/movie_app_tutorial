@@ -8,53 +8,168 @@ on:
 
 jobs:
 
-  lint:
-    name: Analyze the code
-    runs-on: ubuntu-latest
-    steps: 
-      - name: Clone flutter repository from stable channel with 2.2.3 version
-        uses: subosito/flutter-action@v1
-        with:
-          flutter-version: '2.2.3'
-          channel: 'stable'
+  # lint:
+  #   name: Analyze the code
+  #   runs-on: ubuntu-latest
+  #   steps: 
+  #     - name: Clone flutter repository from stable channel with 2.2.3 version
+  #       uses: subosito/flutter-action@v1
+  #       with:
+  #         flutter-version: '2.2.3'
+  #         channel: 'stable'
       
-      - name: Checkout code
-        uses: actions/checkout@v2
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
 
-      - name: Update dependencies
-        run: flutter pub get
+  #     - name: Update dependencies
+  #       run: flutter pub get
         
-      - name: Analyze code
-        run: flutter analyze
+  #     - name: Analyze code
+  #       run: flutter analyze
   
-  test:
-    name: Test wih coverage on ubuntu-latest
-    needs: lint
+  # test:
+  #   name: Test wih coverage on ubuntu-latest
+  #   needs: lint
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Clone flutter repository from stable channel with 2.2.3 version
+  #       uses: subosito/flutter-action@v1
+  #       with:
+  #         flutter-version: '2.2.3'
+  #         channel: 'stable'
+      
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+
+  #     - name: Update dependencies
+  #       run: flutter pub get
+        
+  #     - name: Test and get test coverage
+  #       run: flutter test --coverage
+
+  #     - name: Very Good Ventures Test Coverage
+  #       uses: VGVentures/very-good-coverage@v1.1.1
+  #       with:
+  #         path: "./coverage/lcov.info"
+  #         min_coverage: 1
+        
+  #     - name: Upload coverage to Codecov
+  #       uses: codecov/codecov-action@v1
+  #       with:
+  #         token: ${{ secrets.CODECOV_TOKEN }}
+  #         file: coverage/lcov.info
+
+  version:
+    name: Create version number
     runs-on: ubuntu-latest
+    # needs: [lint, test]
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Fetch all history for all tags and branches
+      run: |
+        git config remote.origin.url https://x-access-token:${{ secrets.TOKEN }}@github.com/${{ github.repository }}
+        git fetch --unshallow --tags
+
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0.9.10
+      with:
+        versionSpec: '5.x'
+
+    - name: Use GitVersion
+      id: gitversion
+      uses: gittools/actions/gitversion/execute@v0.9.10
+
+    - name: Create version.txt with nuGetVersion
+      run: echo ${{ steps.gitversion.outputs.nuGetVersion  }} > version.txt
+
+    - name: Upload version.txt
+      uses: actions/upload-artifact@v2
+      with:
+        name: gitversion
+        path: version.txt
+
+  build_and_release:
+    name: Build appbundle
+    needs: version
+    #if conditional to prevent a job from running
+    if: github.event_name != 'pull_request'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-18.04]
+
+    steps:
+      # Setup a flutter environment.
+      # https://github.com/marketplace/actions/flutter-action
       - name: Clone flutter repository from stable channel with 2.2.3 version
         uses: subosito/flutter-action@v1
         with:
           flutter-version: '2.2.3'
           channel: 'stable'
-      
+
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Update dependencies
-        run: flutter pub get
-        
-      - name: Test and get test coverage
-        run: flutter test --coverage
+      # This action sets up a java environment
+      # https://github.com/actions/setup-java
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      
+      ### Use this if using gitVersion
+      - name: Download version.txt
+        uses: actions/download-artifact@v2
+        with:
+          name: gitversion
 
-      - name: Very Good Ventures Test Coverage
-        uses: VGVentures/very-good-coverage@v1.1.1
-        with:
-          path: "./coverage/lcov.info"
-          min_coverage: 1
+      - name: Remove the newline and put in version1.txt
+        run: tr -d '\n' < version.txt > version1.txt
         
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
+      - name: Read version from version1.txt
+        id: version
+        uses: juliangruber/read-file-action@v1
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: coverage/lcov.info
+          path: version1.txt
+
+      - run: echo ${{ steps.version }}
+
+      ### Use this when want to fetch from pubspec.yaml
+      # - name: Create Version Number
+      #   id: version
+      #   run: |
+      #     git fetch --unshallow
+      #     VERSION_WITHOUT_SUFFIX="$(grep 'version:' pubspec.yaml | awk '{ print $2 }' | cut -d'+' -f 1)"
+      #     function parse_git_hash() {
+      #       git rev-list --count origin/main
+      #     }
+      #     MAIN_COUNT=$(parse_git_hash)
+      #     APP_VERSION="$VERSION_WITHOUT_SUFFIX+$MAIN_COUNT"
+      #     echo "::set-output name=version::$(echo $APP_VERSION)"
+
+      - name: Build Appbundle
+        run: flutter build appbundle
+
+      - name: Create a Release Android Bundle
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/bundle/release/*.aab"
+          token: ${{ secrets.TOKEN }}
+          tag: ${{ steps.version.outputs.content }}
+          commit: ${{ github.sha }}
+
+      - name: Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
+        with:
+          appId: ${{secrets.FIREBASE_ANDROID_APPID}}
+          token: ${{secrets.FIREBASE_TOKEN}}
+          groups: testers
+          file: build/app/outputs/bundle/release/*.aab
+
+      # - name: Upload app bundle
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: appbundle
+      #     path: build/app/outputs/bundle/release/app-release.aab
