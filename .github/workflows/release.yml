@@ -1,0 +1,28 @@
+name: Analyze, Text and Build
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+
+jobs:
+
+  lint:
+    name: Analyze the code
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Clone flutter repository from stable channel with 2.2.3 version
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.2.3'
+          channel: 'stable'
+      
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Update dependencies
+        run: flutter pub get
+        
+      - name: Analyze code
+        run: flutter analyze
