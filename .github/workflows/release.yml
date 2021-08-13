@@ -152,7 +152,14 @@ jobs:
       #     echo "::set-output name=version::$(echo $APP_VERSION)"
 
       - name: Build Appbundle
-        run: flutter build appbundle
+        run: |
+          mkdir $HOME/secrets
+          gpg --quiet --batch --yes --decrypt --passphrase="$SECRET_PASSPHRASE" \
+          --output $HOME/secrets/secrets.tar secrets.tar.gpg
+          tar xvf $HOME/secrets/secrets.tar
+          flutter build appbundle
+        env:
+          SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
 
       # - name: Create a Release Android Bundle
       #   uses: ncipollo/release-action@v1
