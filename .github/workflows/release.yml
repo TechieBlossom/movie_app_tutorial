@@ -157,7 +157,7 @@ jobs:
           gpg --quiet --batch --yes --decrypt --passphrase="$SECRET_PASSPHRASE" \
           --output $HOME/secrets/secrets.tar secrets.tar.gpg
           tar xvf $HOME/secrets/secrets.tar
-          flutter build appbundle
+          flutter build apk
         env:
           SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
 
@@ -175,7 +175,7 @@ jobs:
           appId: ${{secrets.FIREBASE_ANDROID_APPID}}
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: testers
-          file: build/app/outputs/bundle/release/*.aab
+          file: build/app/outputs/flutter-apk/release/*.apk
 
       # - name: Upload app bundle
       #   uses: actions/upload-artifact@v2
