@@ -150,7 +150,7 @@ jobs:
           APP_VERSION="$VERSION_NAME+$MAIN_COUNT"
           echo "::set-output name=version::$(echo $APP_VERSION)"
 
-      - run: echo ${{ steps.version.outputs.content }}
+      - run: echo $APPVERSION
 
       # - name: Build Appbundle
       #   run: flutter build appbundle
