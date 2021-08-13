@@ -150,7 +150,7 @@ jobs:
           APP_VERSION="$VERSION_NAME+$MAIN_COUNT"
           echo "::set-output name=version::$(echo $APP_VERSION)"
 
-      - run: echo $APPVERSION
+      - run: echo $APP_VERSION
 
       # - name: Build Appbundle
       #   run: flutter build appbundle
