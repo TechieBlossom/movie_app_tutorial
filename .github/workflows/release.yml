@@ -152,24 +152,24 @@ jobs:
 
       - run: echo ${{ steps.version.outputs.content }}
 
-      - name: Build Appbundle
-        run: flutter build appbundle
+      # - name: Build Appbundle
+      #   run: flutter build appbundle
 
-      - name: Create a Release Android Bundle
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "build/app/outputs/bundle/release/*.aab"
-          token: ${{ secrets.TOKEN }}
-          tag: ${{ steps.version.outputs.content }}
-          commit: ${{ github.sha }}
+      # - name: Create a Release Android Bundle
+      #   uses: ncipollo/release-action@v1
+      #   with:
+      #     artifacts: "build/app/outputs/bundle/release/*.aab"
+      #     token: ${{ secrets.TOKEN }}
+      #     tag: ${{ steps.version.outputs.content }}
+      #     commit: ${{ github.sha }}
 
-      - name: Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
-        with:
-          appId: ${{secrets.FIREBASE_ANDROID_APPID}}
-          token: ${{secrets.FIREBASE_TOKEN}}
-          groups: testers
-          file: build/app/outputs/bundle/release/*.aab
+      # - name: Firebase App Distribution
+      #   uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
+      #   with:
+      #     appId: ${{secrets.FIREBASE_ANDROID_APPID}}
+      #     token: ${{secrets.FIREBASE_TOKEN}}
+      #     groups: testers
+      #     file: build/app/outputs/bundle/release/*.aab
 
       # - name: Upload app bundle
       #   uses: actions/upload-artifact@v2
