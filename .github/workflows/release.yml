@@ -155,7 +155,7 @@ jobs:
       - name: Create a Release Android Bundle
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/bundle/release/*.aab"
+          artifacts: "build/app/outputs/bundle/debug/*.aab"
           token: ${{ secrets.TOKEN }}
           tag: ${{ steps.version.outputs.content }}
           commit: ${{ github.sha }}
