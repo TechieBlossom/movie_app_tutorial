@@ -150,7 +150,7 @@ jobs:
       #     echo "::set-output name=version::$(echo $APP_VERSION)"
 
       - name: Build Appbundle
-        run: flutter build appbundle
+        run: flutter build appbundle --debug
 
       - name: Create a Release Android Bundle
         uses: ncipollo/release-action@v1
@@ -166,7 +166,7 @@ jobs:
           appId: ${{secrets.FIREBASE_ANDROID_APPID}}
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: testers
-          file: build/app/outputs/bundle/release/*.aab
+          file: build/app/outputs/bundle/debug/*.aab
 
       # - name: Upload app bundle
       #   uses: actions/upload-artifact@v2
