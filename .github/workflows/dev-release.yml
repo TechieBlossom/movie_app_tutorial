@@ -60,7 +60,12 @@ jobs:
       with:
         path: version1.txt
     - name: Update version in YAML
-      run: sed -i 's/99.99.99+99/${{ steps.version.outputs.content }}+${{ github.run_number }}/g' pubspec.yaml
+      run: |
+        sed -i 's/99.99.99+99/${{ steps.version.outputs.content }}+${{ github.run_number }}/g' pubspec.yaml
+        VERSION_NAME="$(grep 'version:' pubspec.yaml | awk '{ print $2 }' | cut -d'+' -f 1)"
+        VERSION_CODE="$(grep 'version:' pubspec.yaml | awk '{ print $2 }' | cut -d'+' -f 2)"
+        echo $VERSION_NAME
+        echo $VERSION_CODE
     - name: Update KeyStore password in gradle properties
       run: sed -i 's/#{KEYSTORE_PASS}#/${{ secrets.KEYSTORE_PASS }}/g' android/key.properties
     - name: Update KeyStore key password in gradle properties
