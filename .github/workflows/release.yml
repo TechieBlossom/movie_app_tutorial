@@ -88,6 +88,74 @@ jobs:
         name: gitversion
         path: version.txt
 
+  build:
+    name: Build aab
+    needs: [ version ]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: '12.x'
+
+    - name: Clone flutter repository from stable channel with 2.2.3 version
+      uses: subosito/flutter-action@v1
+      with:
+        flutter-version: '2.2.3'
+        channel: 'stable'
+
+    - name: Get version.txt
+      uses: actions/download-artifact@v2
+      with:
+        name: gitversion
+
+    - name: Create new file without newline char from version.txt
+      run: tr -d '\n' < version.txt > version1.txt
+
+    - name: Read version
+      id: version
+      uses: juliangruber/read-file-action@v1
+      with:
+        path: version1.txt
+
+    - name: Update version in YAML
+      run: |
+        sed -i 's/99.99.99+99/${{ steps.version.outputs.content }}+${{ github.run_number }}/g' pubspec.yaml
+        VERSION_NAME="$(grep 'version:' pubspec.yaml | awk '{ print $2 }' | cut -d'+' -f 1)"
+        VERSION_CODE="$(grep 'version:' pubspec.yaml | awk '{ print $2 }' | cut -d'+' -f 2)"
+        echo $VERSION_NAME
+        echo $VERSION_CODE
+
+    - name: Update KeyStore password in gradle properties
+      run: sed -i 's/#{KEYSTORE_PASS}#/${{ secrets.KEYSTORE_PASS }}/g' android/key.properties
+
+    - name: Update KeyStore key password in gradle properties
+      run: sed -i 's/#{KEYSTORE_KEY_PASS}#/${{ secrets.KEYSTORE_KEY_PASS }}/g' android/key.properties
+
+    - name: Update dependencies
+      run: flutter pub get
+
+    - name: Build Android Bundle
+      run: flutter build appbundle
+
+    - name: Create a Release in GitHub
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "build/app/outputs/bundle/release/app-release.aab"
+        token: ${{ secrets.TOKEN }}
+        tag: ${{ steps.version.outputs.content }}
+        commit: ${{ github.sha }}
+        prerelease: false
+        
+    - name: Upload app bundle
+      uses: actions/upload-artifact@v2
+      with:
+        name: appbundle
+        path: build/app/outputs/bundle/release/app-release.aab
+
     
 
 
