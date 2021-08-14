@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:movieapp/presentation/blocs/theme/theme_cubit.dart';
+import 'blocs/theme/theme_cubit.dart';
 
 import '../common/constants/languages.dart';
 import '../common/constants/route_constants.dart';
