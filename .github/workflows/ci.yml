@@ -1,0 +1,57 @@
+name: Analyze and Test
+
+on:
+  pull_request:
+
+jobs:
+
+  lint:
+    name: Analyze the code
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Clone flutter repository from stable channel with 2.2.3 version
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.2.3'
+          channel: 'stable'
+      
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Update dependencies
+        run: flutter pub get
+        
+      - name: Analyze code
+        run: flutter analyze
+  
+  test:
+    name: Test wih coverage on ubuntu-latest
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone flutter repository from stable channel with 2.2.3 version
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.2.3'
+          channel: 'stable'
+      
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Update dependencies
+        run: flutter pub get
+        
+      - name: Test and get test coverage
+        run: flutter test --coverage
+
+      - name: Very Good Ventures Test Coverage
+        uses: VGVentures/very-good-coverage@v1.1.1
+        with:
+          path: "./coverage/lcov.info"
+          min_coverage: 1
+        
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: coverage/lcov.info
