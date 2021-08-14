@@ -61,7 +61,7 @@ jobs:
         path: version1.txt
     - name: Update version in YAML
       run: |
-        sed -i 's/99.99.99+99/${{ steps.version.outputs.content }}+${{ github.run_number }}/g' pubspec.yaml
+        sed -i 's/#{VERSION}#/${{ steps.version.outputs.content }}+${{ github.run_number }}/g' pubspec.yaml
         VERSION_NAME="$(grep 'version:' pubspec.yaml | awk '{ print $2 }' | cut -d'+' -f 1)"
         VERSION_CODE="$(grep 'version:' pubspec.yaml | awk '{ print $2 }' | cut -d'+' -f 2)"
         echo $VERSION_NAME
