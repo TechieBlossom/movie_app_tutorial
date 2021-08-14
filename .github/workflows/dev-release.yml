@@ -108,6 +108,7 @@ jobs:
   firebase_distribution:
     name: Release app to internal track
     runs-on: ubuntu-latest
+    needs: [ build ]
     steps:
     - uses: actions/checkout@v1
     - name: Get appbundle from artifacts
