@@ -105,16 +105,16 @@ jobs:
         track: internal
         whatsNewDirectory: release_notes/whatsnew
 
-    firebase_distribution:
-      name: Release app to internal track
-      runs-on: ubuntu-latest
-      steps:
+  firebase_distribution:
+    name: Release app to internal track
+    runs-on: ubuntu-latest
+    steps:
     - uses: actions/checkout@v1
     - name: Get appbundle from artifacts
       uses: actions/download-artifact@v2
       with:
         name: appbundle
-     - name: Firebase App Distribution
+    - name: Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
         with:
           appId: ${{secrets.FIREBASE_ANDROID_APPID}}
