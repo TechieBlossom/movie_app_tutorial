@@ -106,7 +106,7 @@ jobs:
         whatsNewDirectory: release_notes/whatsnew
 
   firebase_distribution:
-    name: Release app to internal track
+    name: Release app to firebase distribution
     runs-on: ubuntu-latest
     needs: [ build ]
     steps:

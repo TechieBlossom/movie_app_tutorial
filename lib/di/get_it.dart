@@ -1,8 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
-import 'package:movieapp/domain/usecases/get_preferred_theme.dart';
-import 'package:movieapp/domain/usecases/update_theme.dart';
-import 'package:movieapp/presentation/blocs/theme/theme_cubit.dart';
+import '../domain/usecases/get_preferred_theme.dart';
+import '../domain/usecases/update_theme.dart';
+import '../presentation/blocs/theme/theme_cubit.dart';
 
 import '../data/core/api_client.dart';
 import '../data/data_sources/authentication_local_data_source.dart';
