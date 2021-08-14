@@ -151,15 +151,35 @@ jobs:
       #     APP_VERSION="$VERSION_NAME+$MAIN_COUNT"
       #     echo "::set-output name=version::$(echo $APP_VERSION)"
 
-      - name: Build Appbundle
-        run: |
-          mkdir $HOME/secrets
-          gpg --quiet --batch --yes --decrypt --passphrase="$SECRET_PASSPHRASE" \
-          --output $HOME/secrets/secrets.tar secrets.tar.gpg
-          tar xvf $HOME/secrets/secrets.tar
-          flutter build apk
-        env:
-          SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
+      # - name: Build Appbundle
+      #   run: |
+      #     mkdir $HOME/secrets
+      #     gpg --quiet --batch --yes --decrypt --passphrase="$SECRET_PASSPHRASE" \
+      #     --output $HOME/secrets/secrets.tar secrets.tar.gpg
+      #     tar xvf $HOME/secrets/secrets.tar
+      #     flutter build apk
+      #   env:
+      #     SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
+
+        - name: Configure Keystore for Android
+          run: |
+            echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > app/upload-keystore.jks
+            echo "storeFile=upload-keystore.jks" >> key.properties
+            echo "keyAlias=$KEYSTORE_KEY_ALIAS" >> key.properties
+            echo "storePassword=$KEYSTORE_STORE_PASSWORD" >> key.properties
+            echo "keyPassword=$KEYSTORE_KEY_PASSWORD" >> key.properties
+          env:
+            PLAY_STORE_UPLOAD_KEY: ${{ secrets.PLAY_STORE_UPLOAD_KEY }}
+            KEYSTORE_KEY_ALIAS: ${{ secrets.KEYSTORE_KEY_ALIAS }}
+            KEYSTORE_KEY_PASSWORD: ${{ secrets.KEYSTORE_KEY_PASSWORD }}
+            KEYSTORE_STORE_PASSWORD: ${{ secrets.KEYSTORE_STORE_PASSWORD }}
+          working-directory: android
+        
+        - name: Build Appbundle
+          run: |
+            flutter pub get
+            flutter build appbundle --release
+
 
       # - name: Create a Release Android Bundle
       #   uses: ncipollo/release-action@v1
@@ -169,16 +189,16 @@ jobs:
       #     tag: ${{ steps.version.outputs.content }}
       #     commit: ${{ github.sha }}
 
+      - name: Upload app bundle
+        uses: actions/upload-artifact@v2
+        with:
+          name: appbundle
+          path: build/app/outputs/bundle/release/*.aab
+
       - name: Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
         with:
           appId: ${{secrets.FIREBASE_ANDROID_APPID}}
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: testers
-          file: build/app/outputs/flutter-apk/release/*.apk
-
-      # - name: Upload app bundle
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: appbundle
-      #     path: build/app/outputs/bundle/release/app-release.aab
+          file: build/app/outputs/bundle/release/*.aab
