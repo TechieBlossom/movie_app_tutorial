@@ -6,7 +6,7 @@ class CastEntity extends Equatable {
   final String posterPath;
   final String character;
 
-  CastEntity({
+  const CastEntity({
     required this.creditId,
     required this.name,
     required this.posterPath,

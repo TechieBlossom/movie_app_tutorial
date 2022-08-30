@@ -9,7 +9,7 @@ class UpdateTheme extends UseCase<void, String> {
   UpdateTheme(this.appRepository);
 
   @override
-  Future<Either<AppError, void>> call(String themeName) async {
-    return await appRepository.updateTheme(themeName);
+  Future<Either<AppError, void>> call(String params) async {
+    return await appRepository.updateTheme(params);
   }
 }

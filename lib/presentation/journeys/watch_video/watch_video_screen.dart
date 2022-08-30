@@ -18,7 +18,7 @@ class WatchVideoScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _WatchVideoScreenState createState() => _WatchVideoScreenState();
+  State<WatchVideoScreen> createState() => _WatchVideoScreenState();
 }
 
 class _WatchVideoScreenState extends State<WatchVideoScreen> {
@@ -31,7 +31,7 @@ class _WatchVideoScreenState extends State<WatchVideoScreen> {
     _videos = widget.watchVideoArguments.videos;
     _controller = YoutubePlayerController(
       initialVideoId: _videos[0].key,
-      flags: YoutubePlayerFlags(
+      flags: const YoutubePlayerFlags(
         autoPlay: true,
         mute: true,
       ),
@@ -57,7 +57,7 @@ class _WatchVideoScreenState extends State<WatchVideoScreen> {
           controller: _controller ??
               YoutubePlayerController(
                 initialVideoId: _videos[0].key,
-                flags: YoutubePlayerFlags(
+                flags: const YoutubePlayerFlags(
                   autoPlay: true,
                   mute: true,
                 ),
@@ -65,7 +65,7 @@ class _WatchVideoScreenState extends State<WatchVideoScreen> {
           aspectRatio: 16 / 9,
           showVideoProgressIndicator: true,
           progressIndicatorColor: Colors.amber,
-          progressColors: ProgressBarColors(
+          progressColors: const ProgressBarColors(
             playedColor: Colors.amber,
             handleColor: Colors.amberAccent,
           ),

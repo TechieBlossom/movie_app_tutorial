@@ -5,6 +5,7 @@ import '../models/movie_model.dart';
 import '../models/movies_result_model.dart';
 import '../models/video_model.dart';
 import '../models/video_result_model.dart';
+import 'package:flutter/foundation.dart';
 
 abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getTrending();
@@ -33,7 +34,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<List<MovieModel>> getPopular() async {
     final response = await _client.get('movie/popular');
     final movies = MoviesResultModel.fromJson(response).movies;
-    print(movies);
+    debugPrint(movies.join(', '));
     return movies;
   }
 
@@ -41,7 +42,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<List<MovieModel>> getComingSoon() async {
     final response = await _client.get('movie/upcoming');
     final movies = MoviesResultModel.fromJson(response).movies;
-    print(movies);
+    debugPrint(movies.join(', '));
     return movies;
   }
 
@@ -49,7 +50,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<List<MovieModel>> getPlayingNow() async {
     final response = await _client.get('movie/now_playing');
     final movies = MoviesResultModel.fromJson(response).movies;
-    print(movies);
+    debugPrint(movies.join(', '));
     return movies;
   }
 

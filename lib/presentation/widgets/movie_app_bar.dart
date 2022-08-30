@@ -12,6 +12,8 @@ import '../journeys/search_movie/custom_search_movie_delegate.dart';
 import 'logo.dart';
 
 class MovieAppBar extends StatelessWidget {
+  const MovieAppBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,7 +36,7 @@ class MovieAppBar extends StatelessWidget {
                   : AppColor.vulcan,
             ),
           ),
-          Expanded(child: Logo(height: Sizes.dimen_14)),
+          const Expanded(child: Logo(height: Sizes.dimen_14)),
           IconButton(
             onPressed: () {
               showSearch(

@@ -12,6 +12,8 @@ import '../../../../domain/entities/movie_entity.dart';
 import '../../../blocs/movie_backdrop/movie_backdrop_cubit.dart';
 
 class MovieBackdropWidget extends StatelessWidget {
+  const MovieBackdropWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(

@@ -24,7 +24,7 @@ class MovieDetailScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MovieDetailScreenState createState() => _MovieDetailScreenState();
+  State<MovieDetailScreen> createState() => _MovieDetailScreenState();
 }
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
@@ -92,7 +92,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                         style: Theme.of(context).textTheme.headline6,
                       ),
                     ),
-                    CastWidget(),
+                    const CastWidget(),
                     VideosWidget(videosCubit: _videosCubit),
                   ],
                 ),
@@ -100,7 +100,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
             } else if (state is MovieDetailError) {
               return Container();
             }
-            return SizedBox.shrink();
+            return const SizedBox.shrink();
           },
         ),
       ),

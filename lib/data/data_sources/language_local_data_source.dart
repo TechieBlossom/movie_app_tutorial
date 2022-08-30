@@ -1,5 +1,6 @@
+import 'dart:async';
+
 import 'package:hive/hive.dart';
-import 'package:pedantic/pedantic.dart';
 
 abstract class LanguageLocalDataSource {
   Future<void> updateLanguage(String languageCode);

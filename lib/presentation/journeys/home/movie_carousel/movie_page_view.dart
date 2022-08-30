@@ -20,7 +20,7 @@ class MoviePageView extends StatefulWidget {
         super(key: key);
 
   @override
-  _MoviePageViewState createState() => _MoviePageViewState();
+  State<MoviePageView> createState() => _MoviePageViewState();
 }
 
 class _MoviePageViewState extends State<MoviePageView> {

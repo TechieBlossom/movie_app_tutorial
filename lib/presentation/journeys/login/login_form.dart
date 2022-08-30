@@ -15,7 +15,7 @@ class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
 
   @override
-  _LoginFormState createState() => _LoginFormState();
+  State<LoginForm> createState() => _LoginFormState();
 }
 
 class _LoginFormState extends State<LoginForm> {
@@ -84,11 +84,12 @@ class _LoginFormState extends State<LoginForm> {
             BlocConsumer<LoginCubit, LoginState>(
               buildWhen: (previous, current) => current is LoginError,
               builder: (context, state) {
-                if (state is LoginError)
+                if (state is LoginError) {
                   return Text(
                     state.message.t(context),
                     style: Theme.of(context).textTheme.orangeSubtitle1,
                   );
+                }
                 return const SizedBox.shrink();
               },
               listenWhen: (previous, current) => current is LoginSuccess,

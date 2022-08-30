@@ -18,7 +18,7 @@ import 'navigation_expanded_list_item.dart';
 import 'navigation_list_item.dart';
 
 class NavigationDrawer extends StatelessWidget {
-  const NavigationDrawer();
+  const NavigationDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +85,7 @@ class NavigationDrawer extends StatelessWidget {
                 },
               ),
             ),
-            Spacer(),
+            const Spacer(),
             BlocBuilder<ThemeCubit, Themes>(builder: (context, theme) {
               return Align(
                 alignment: Alignment.center,

@@ -15,7 +15,7 @@ class AppRepositoryImpl extends AppRepository {
       final response = await languageLocalDataSource.getPreferredLanguage();
       return Right(response);
     } on Exception {
-      return Left(AppError(AppErrorType.database));
+      return const Left(AppError(AppErrorType.database));
     }
   }
 
@@ -25,7 +25,7 @@ class AppRepositoryImpl extends AppRepository {
       final response = await languageLocalDataSource.updateLanguage(language);
       return Right(response);
     } on Exception {
-      return Left(AppError(AppErrorType.database));
+      return const Left(AppError(AppErrorType.database));
     }
   }
 
@@ -35,17 +35,17 @@ class AppRepositoryImpl extends AppRepository {
       final response = await languageLocalDataSource.getPreferredTheme();
       return Right(response);
     } on Exception {
-      return Left(AppError(AppErrorType.database));
+      return const Left(AppError(AppErrorType.database));
     }
   }
 
   @override
-  Future<Either<AppError, void>> updateTheme(String themeName) async {
+  Future<Either<AppError, void>> updateTheme(String theme) async {
     try {
-      final response = await languageLocalDataSource.updateTheme(themeName);
+      final response = await languageLocalDataSource.updateTheme(theme);
       return Right(response);
     } on Exception {
-      return Left(AppError(AppErrorType.database));
+      return const Left(AppError(AppErrorType.database));
     }
   }
 }

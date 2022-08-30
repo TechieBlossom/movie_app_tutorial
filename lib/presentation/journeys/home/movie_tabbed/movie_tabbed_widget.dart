@@ -13,8 +13,10 @@ import 'movie_tabbed_constants.dart';
 import 'tab_title_widget.dart';
 
 class MovieTabbedWidget extends StatefulWidget {
+  const MovieTabbedWidget({Key? key}) : super(key: key);
+
   @override
-  _MovieTabbedWidgetState createState() => _MovieTabbedWidgetState();
+  State<MovieTabbedWidget> createState() => _MovieTabbedWidgetState();
 }
 
 class _MovieTabbedWidgetState extends State<MovieTabbedWidget>

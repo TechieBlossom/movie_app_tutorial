@@ -6,7 +6,7 @@ import 'package:wiredash/wiredash.dart';
 import 'themes/theme_color.dart';
 
 class WiredashApp extends StatelessWidget {
-  final navigatorKey;
+  final GlobalKey<NavigatorState> navigatorKey;
   final Widget child;
   final String languageCode;
 
@@ -24,7 +24,6 @@ class WiredashApp extends StatelessWidget {
       projectId: 'movie-app-tutorial-k1xtma1',
       secret: 'wsmigg476q5l4k9mz2njmob4puuuwt58',
       navigatorKey: navigatorKey,
-      child: child,
       options: WiredashOptionsData(
         locale: Locale.fromSubtags(
           languageCode: languageCode,
@@ -40,6 +39,7 @@ class WiredashApp extends StatelessWidget {
         secondaryTextColor: isDarkTheme ? Colors.white : AppColor.vulcan,
         tertiaryTextColor: isDarkTheme ? Colors.white : AppColor.vulcan,
       ),
+      child: child,
     );
   }
 }

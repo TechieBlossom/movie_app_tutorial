@@ -12,7 +12,7 @@ class SearchMovieInitial extends SearchMovieState {}
 class SearchMovieLoaded extends SearchMovieState {
   final List<MovieEntity> movies;
 
-  SearchMovieLoaded(this.movies);
+  const SearchMovieLoaded(this.movies);
 
   @override
   List<Object> get props => [movies];
@@ -23,7 +23,7 @@ class SearchMovieLoading extends SearchMovieState {}
 class SearchMovieError extends SearchMovieState {
   final AppErrorType errorType;
 
-  SearchMovieError(this.errorType);
+  const SearchMovieError(this.errorType);
 
   @override
   List<Object> get props => [errorType];

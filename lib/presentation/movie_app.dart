@@ -19,8 +19,10 @@ import 'themes/theme_text.dart';
 import 'wiredash_app.dart';
 
 class MovieApp extends StatefulWidget {
+  const MovieApp({super.key});
+
   @override
-  _MovieAppState createState() => _MovieAppState();
+  State<MovieApp> createState() => _MovieAppState();
 }
 
 class _MovieAppState extends State<MovieApp> {
@@ -74,7 +76,6 @@ class _MovieAppState extends State<MovieApp> {
                     unselectedWidgetColor: AppColor.royalBlue,
                     primaryColor:
                         theme == Themes.dark ? AppColor.vulcan : Colors.white,
-                    accentColor: AppColor.royalBlue,
                     scaffoldBackgroundColor:
                         theme == Themes.dark ? AppColor.vulcan : Colors.white,
                     brightness: theme == Themes.dark
@@ -98,14 +99,16 @@ class _MovieAppState extends State<MovieApp> {
                               : AppColor.vulcan,
                         ),
                       ),
-                      enabledBorder: UnderlineInputBorder(
+                      enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey)),
                     ),
+                    colorScheme: ColorScheme.fromSwatch()
+                        .copyWith(secondary: AppColor.royalBlue),
                   ),
                   supportedLocales:
                       Languages.languages.map((e) => Locale(e.code)).toList(),
                   locale: locale,
-                  localizationsDelegates: [
+                  localizationsDelegates: const [
                     AppLocalizations.delegate,
                     GlobalMaterialLocalizations.delegate,
                     GlobalWidgetsLocalizations.delegate,

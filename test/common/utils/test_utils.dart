@@ -14,7 +14,7 @@ materialWrapperWithBlocs(
     child: MaterialApp(
       locale: Locale(Languages.languages[0].code),
       supportedLocales: Languages.languages.map((e) => Locale(e.code)).toList(),
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

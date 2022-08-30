@@ -20,13 +20,13 @@ class VideosWidget extends StatelessWidget {
     return BlocBuilder<VideosCubit, VideosState>(
       builder: (context, state) {
         if (state is VideosLoaded && state.videos.iterator.moveNext()) {
-          final _videos = state.videos;
+          final videos = state.videos;
           return Button(
             text: TranslationConstants.watchTrailers,
             onPressed: () {
               Navigator.of(context).pushNamed(
                 RouteList.watchTrailer,
-                arguments: WatchVideoArguments(_videos),
+                arguments: WatchVideoArguments(videos),
               );
             },
           );

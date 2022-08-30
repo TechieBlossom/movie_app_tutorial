@@ -11,7 +11,7 @@ class Logo extends StatelessWidget {
   const Logo({
     Key? key,
     required this.height,
-  })   : assert(height > 0, 'height should be greater than 0'),
+  })  : assert(height > 0, 'height should be greater than 0'),
         super(key: key);
 
   @override

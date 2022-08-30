@@ -1,5 +1,6 @@
 import '../core/api_client.dart';
 import '../models/request_token_model.dart';
+import 'package:flutter/foundation.dart';
 
 abstract class AuthenticationRemoteDataSource {
   Future<RequestTokenModel> getRequestToken();
@@ -17,7 +18,7 @@ class AuthenticationRemoteDataSourceImpl
   @override
   Future<RequestTokenModel> getRequestToken() async {
     final response = await _client.get('authentication/token/new');
-    print(response);
+    debugPrint(response);
     final requestTokenModel = RequestTokenModel.fromJson(response);
     return requestTokenModel;
   }
@@ -29,7 +30,7 @@ class AuthenticationRemoteDataSourceImpl
       'authentication/token/validate_with_login',
       params: requestBody,
     );
-    print(response);
+    debugPrint(response);
     return RequestTokenModel.fromJson(response);
   }
 
@@ -39,7 +40,7 @@ class AuthenticationRemoteDataSourceImpl
       'authentication/session/new',
       params: requestBody,
     );
-    print(response);
+    debugPrint(response);
     return response['success'] ? response['session_id'] : null;
   }
 

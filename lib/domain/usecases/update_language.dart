@@ -10,7 +10,7 @@ class UpdateLanguage extends UseCase<void, String> {
   UpdateLanguage(this.appRepository);
 
   @override
-  Future<Either<AppError, void>> call(String languageCode) async {
-    return await appRepository.updateLanguage(languageCode);
+  Future<Either<AppError, void>> call(String params) async {
+    return await appRepository.updateLanguage(params);
   }
 }

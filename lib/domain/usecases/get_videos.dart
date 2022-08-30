@@ -12,8 +12,7 @@ class GetVideos extends UseCase<List<VideoEntity>, MovieParams> {
   GetVideos(this.repository);
 
   @override
-  Future<Either<AppError, List<VideoEntity>>> call(
-      MovieParams movieParams) async {
-    return await repository.getVideos(movieParams.id);
+  Future<Either<AppError, List<VideoEntity>>> call(MovieParams params) async {
+    return await repository.getVideos(params.id);
   }
 }

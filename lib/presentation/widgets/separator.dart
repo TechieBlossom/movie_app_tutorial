@@ -5,6 +5,8 @@ import '../../common/extensions/size_extensions.dart';
 import '../themes/theme_color.dart';
 
 class Separator extends StatelessWidget {
+  const Separator({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +18,7 @@ class Separator extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(Sizes.dimen_1.h)),
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: [
             AppColor.violet,
             AppColor.royalBlue,

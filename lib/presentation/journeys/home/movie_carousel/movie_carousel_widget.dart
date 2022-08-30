@@ -12,27 +12,26 @@ class MovieCarouselWidget extends StatelessWidget {
   final int defaultIndex;
 
   const MovieCarouselWidget({
-    Key? key,
+    super.key,
     required this.movies,
     this.defaultIndex = 0,
-  })  : assert(defaultIndex >= 0, 'defaultIndex cannot be less than 0'),
-        super(key: key);
+  }) : assert(defaultIndex >= 0, 'defaultIndex cannot be less than 0');
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
       children: [
-        MovieBackdropWidget(),
+        const MovieBackdropWidget(),
         Column(
           children: [
-            MovieAppBar(),
+            const MovieAppBar(),
             MoviePageView(
               movies: movies,
               initialPage: defaultIndex,
             ),
-            MovieDataWidget(),
-            Separator(),
+            const MovieDataWidget(),
+            const Separator(),
           ],
         ),
       ],

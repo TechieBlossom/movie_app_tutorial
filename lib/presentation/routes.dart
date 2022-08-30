@@ -11,14 +11,14 @@ import 'journeys/watch_video/watch_video_screen.dart';
 
 class Routes {
   static Map<String, WidgetBuilder> getRoutes(RouteSettings setting) => {
-        RouteList.initial: (context) => LoginScreen(),
-        RouteList.home: (context) => HomeScreen(),
+        RouteList.initial: (context) => const LoginScreen(),
+        RouteList.home: (context) => const HomeScreen(),
         RouteList.movieDetail: (context) => MovieDetailScreen(
               movieDetailArguments: setting.arguments as MovieDetailArguments,
             ),
         RouteList.watchTrailer: (context) => WatchVideoScreen(
               watchVideoArguments: setting.arguments as WatchVideoArguments,
             ),
-        RouteList.favorite: (context) => FavoriteScreen(),
+        RouteList.favorite: (context) => const FavoriteScreen(),
       };
 }

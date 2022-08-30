@@ -12,8 +12,7 @@ class GetMovieDetail extends UseCase<MovieDetailEntity, MovieParams> {
   GetMovieDetail(this.repository);
 
   @override
-  Future<Either<AppError, MovieDetailEntity>> call(
-      MovieParams movieParams) async {
-    return await repository.getMovieDetail(movieParams.id);
+  Future<Either<AppError, MovieDetailEntity>> call(MovieParams params) async {
+    return await repository.getMovieDetail(params.id);
   }
 }

@@ -12,7 +12,7 @@ class GetComingSoon extends UseCase<List<MovieEntity>, NoParams> {
   GetComingSoon(this.repository);
 
   @override
-  Future<Either<AppError, List<MovieEntity>>> call(NoParams noParams) async {
+  Future<Either<AppError, List<MovieEntity>>> call(NoParams params) async {
     return await repository.getComingSoon();
   }
 }

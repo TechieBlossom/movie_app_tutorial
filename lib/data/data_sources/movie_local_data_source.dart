@@ -27,12 +27,12 @@ class MovieLocalDataSourceImpl extends MovieLocalDataSource {
     final movieBox = await Hive.openBox('movieBox');
     final movieIds = movieBox.keys;
     List<MovieTable> movies = [];
-    movieIds.forEach((movieId) {
+    for (var movieId in movieIds) {
       final movie = movieBox.get(movieId);
       if (movie != null) {
         movies.add(movieBox.get(movieId));
       }
-    });
+    }
     return movies;
   }
 

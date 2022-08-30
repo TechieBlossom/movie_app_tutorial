@@ -19,8 +19,8 @@ class MoviesResultModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['results'] = this.movies.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['results'] = movies.map((v) => v.toJson()).toList();
     return data;
   }
 }

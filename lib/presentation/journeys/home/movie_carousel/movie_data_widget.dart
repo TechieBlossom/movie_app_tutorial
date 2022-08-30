@@ -5,6 +5,8 @@ import '../../../../domain/entities/movie_entity.dart';
 import '../../../blocs/movie_backdrop/movie_backdrop_cubit.dart';
 
 class MovieDataWidget extends StatelessWidget {
+  const MovieDataWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieBackdropCubit, MovieEntity?>(

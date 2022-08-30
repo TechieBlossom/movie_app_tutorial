@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../domain/entities/app_error.dart';
 import '../../domain/repositories/authentication_repository.dart';
@@ -23,36 +24,36 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
       final response = await _authenticationRemoteDataSource.getRequestToken();
       return Right(response);
     } on SocketException {
-      return Left(AppError(AppErrorType.network));
+      return const Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError(AppErrorType.api));
+      return const Left(AppError(AppErrorType.api));
     }
   }
 
   @override
-  Future<Either<AppError, bool>> loginUser(Map<String, dynamic> body) async {
+  Future<Either<AppError, bool>> loginUser(Map<String, dynamic> params) async {
     final requestTokenEitherResponse = await _getRequestToken();
     final token1 = requestTokenEitherResponse
         .getOrElse(() => RequestTokenModel())
         .requestToken;
 
     try {
-      body.putIfAbsent('request_token', () => token1);
+      params.putIfAbsent('request_token', () => token1);
       final validateWithLoginToken =
-          await _authenticationRemoteDataSource.validateWithLogin(body);
+          await _authenticationRemoteDataSource.validateWithLogin(params);
       final sessionId = await _authenticationRemoteDataSource
           .createSession(validateWithLoginToken.toJson());
       if (sessionId != null) {
         await _authenticationLocalDataSource.saveSessionId(sessionId);
-        return Right(true);
+        return const Right(true);
       }
-      return Left(AppError(AppErrorType.sessionDenied));
+      return const Left(AppError(AppErrorType.sessionDenied));
     } on SocketException {
-      return Left(AppError(AppErrorType.network));
+      return const Left(AppError(AppErrorType.network));
     } on UnauthorisedException {
-      return Left(AppError(AppErrorType.unauthorised));
+      return const Left(AppError(AppErrorType.unauthorised));
     } on Exception {
-      return Left(AppError(AppErrorType.api));
+      return const Left(AppError(AppErrorType.api));
     }
   }
 
@@ -65,7 +66,7 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
         _authenticationLocalDataSource.deleteSessionId(),
       ]);
     }
-    print(await _authenticationLocalDataSource.getSessionId());
-    return Right(Unit);
+    debugPrint(await _authenticationLocalDataSource.getSessionId());
+    return const Right(Unit);
   }
 }

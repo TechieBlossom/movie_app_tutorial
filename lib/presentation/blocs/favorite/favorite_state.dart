@@ -12,7 +12,7 @@ class FavoriteInitial extends FavoriteState {}
 class FavoriteMoviesLoaded extends FavoriteState {
   final List<MovieEntity> movies;
 
-  FavoriteMoviesLoaded(this.movies);
+  const FavoriteMoviesLoaded(this.movies);
 
   @override
   List<Object> get props => [movies];
@@ -23,7 +23,7 @@ class FavoriteMoviesError extends FavoriteState {}
 class IsFavoriteMovie extends FavoriteState {
   final bool isMovieFavorite;
 
-  IsFavoriteMovie(this.isMovieFavorite);
+  const IsFavoriteMovie(this.isMovieFavorite);
 
   @override
   List<Object> get props => [isMovieFavorite];

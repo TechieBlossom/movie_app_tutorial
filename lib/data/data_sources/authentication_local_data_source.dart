@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:flutter/foundation.dart';
 
 abstract class AuthenticationLocalDataSource {
   Future<void> saveSessionId(String sessionId);
@@ -9,7 +10,7 @@ abstract class AuthenticationLocalDataSource {
 class AuthenticationLocalDataSourceImpl extends AuthenticationLocalDataSource {
   @override
   Future<void> deleteSessionId() async {
-    print('delete session - local');
+    debugPrint('delete session - local');
     final authenticationBox = await Hive.openBox('authenticationBox');
     authenticationBox.delete('session_id');
   }

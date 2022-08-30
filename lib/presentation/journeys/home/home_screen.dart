@@ -12,8 +12,10 @@ import 'movie_carousel/movie_carousel_widget.dart';
 import 'movie_tabbed/movie_tabbed_widget.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -74,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       defaultIndex: state.defaultIndex,
                     ),
                   ),
-                  FractionallySizedBox(
+                  const FractionallySizedBox(
                     alignment: Alignment.bottomCenter,
                     heightFactor: 0.4,
                     child: MovieTabbedWidget(),

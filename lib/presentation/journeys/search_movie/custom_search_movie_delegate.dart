@@ -25,7 +25,9 @@ class CustomSearchDelegate extends SearchDelegate {
       IconButton(
         icon: Icon(
           Icons.clear,
-          color: query.isEmpty ? Colors.grey : Theme.of(context).accentColor,
+          color: query.isEmpty
+              ? Colors.grey
+              : Theme.of(context).colorScheme.secondary,
         ),
         onPressed: query.isEmpty ? null : () => query = '',
       ),
@@ -89,6 +91,6 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return SizedBox.shrink();
+    return const SizedBox.shrink();
   }
 }

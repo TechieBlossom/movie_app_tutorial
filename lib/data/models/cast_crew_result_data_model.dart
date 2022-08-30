@@ -36,10 +36,10 @@ class CastCrewResultModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['cast'] = this.cast.map((v) => v.toJson()).toList();
-    data['crew'] = this.crew.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['cast'] = cast.map((v) => v.toJson()).toList();
+    data['crew'] = crew.map((v) => v.toJson()).toList();
     return data;
   }
 }
@@ -60,28 +60,22 @@ bool _isValidCrew(Crew crewModel) {
 
 class CastModel extends CastEntity {
   final int? castId;
-  final String character;
-  final String creditId;
   final int? gender;
   final int? id;
-  final String name;
   final int? order;
   final String profilePath;
 
-  CastModel({
+  const CastModel({
     this.castId,
-    required this.character,
-    required this.creditId,
+    required super.character,
+    required super.creditId,
     this.gender,
     this.id,
-    required this.name,
+    required super.name,
     this.order,
     required this.profilePath,
   }) : super(
-          creditId: creditId,
-          name: name,
           posterPath: profilePath,
-          character: character,
         );
 
   factory CastModel.fromJson(Map<String, dynamic> json) {
@@ -98,15 +92,15 @@ class CastModel extends CastEntity {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['cast_id'] = this.castId;
-    data['character'] = this.character;
-    data['credit_id'] = this.creditId;
-    data['gender'] = this.gender;
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['order'] = this.order;
-    data['profile_path'] = this.profilePath;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['cast_id'] = castId;
+    data['character'] = character;
+    data['credit_id'] = creditId;
+    data['gender'] = gender;
+    data['id'] = id;
+    data['name'] = name;
+    data['order'] = order;
+    data['profile_path'] = profilePath;
     return data;
   }
 }
@@ -140,14 +134,14 @@ class Crew {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['credit_id'] = this.creditId;
-    data['department'] = this.department;
-    data['gender'] = this.gender;
-    data['id'] = this.id;
-    data['job'] = this.job;
-    data['name'] = this.name;
-    data['profile_path'] = this.profilePath;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['credit_id'] = creditId;
+    data['department'] = department;
+    data['gender'] = gender;
+    data['id'] = id;
+    data['job'] = job;
+    data['name'] = name;
+    data['profile_path'] = profilePath;
     return data;
   }
 }

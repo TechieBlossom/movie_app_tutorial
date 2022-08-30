@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../domain/entities/app_error.dart';
 import '../../domain/entities/movie_entity.dart';
@@ -25,9 +26,9 @@ class MovieRepositoryImpl extends MovieRepository {
       final movies = await remoteDataSource.getTrending();
       return Right(movies);
     } on SocketException {
-      return Left(AppError(AppErrorType.network));
+      return const Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError(AppErrorType.api));
+      return const Left(AppError(AppErrorType.api));
     }
   }
 
@@ -37,9 +38,9 @@ class MovieRepositoryImpl extends MovieRepository {
       final movies = await remoteDataSource.getComingSoon();
       return Right(movies);
     } on SocketException {
-      return Left(AppError(AppErrorType.network));
+      return const Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError(AppErrorType.api));
+      return const Left(AppError(AppErrorType.api));
     }
   }
 
@@ -49,9 +50,9 @@ class MovieRepositoryImpl extends MovieRepository {
       final movies = await remoteDataSource.getPlayingNow();
       return Right(movies);
     } on SocketException {
-      return Left(AppError(AppErrorType.network));
+      return const Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError(AppErrorType.api));
+      return const Left(AppError(AppErrorType.api));
     }
   }
 
@@ -61,9 +62,9 @@ class MovieRepositoryImpl extends MovieRepository {
       final movies = await remoteDataSource.getPopular();
       return Right(movies);
     } on SocketException {
-      return Left(AppError(AppErrorType.network));
+      return const Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError(AppErrorType.api));
+      return const Left(AppError(AppErrorType.api));
     }
   }
 
@@ -73,9 +74,9 @@ class MovieRepositoryImpl extends MovieRepository {
       final movie = await remoteDataSource.getMovieDetail(id);
       return Right(movie);
     } on SocketException {
-      return Left(AppError(AppErrorType.network));
+      return const Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError(AppErrorType.api));
+      return const Left(AppError(AppErrorType.api));
     }
   }
 
@@ -85,9 +86,9 @@ class MovieRepositoryImpl extends MovieRepository {
       final castCrew = await remoteDataSource.getCastCrew(id);
       return Right(castCrew);
     } on SocketException {
-      return Left(AppError(AppErrorType.network));
+      return const Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError(AppErrorType.api));
+      return const Left(AppError(AppErrorType.api));
     }
   }
 
@@ -97,9 +98,9 @@ class MovieRepositoryImpl extends MovieRepository {
       final videos = await remoteDataSource.getVideos(id);
       return Right(videos);
     } on SocketException {
-      return Left(AppError(AppErrorType.network));
+      return const Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError(AppErrorType.api));
+      return const Left(AppError(AppErrorType.api));
     }
   }
 
@@ -110,9 +111,9 @@ class MovieRepositoryImpl extends MovieRepository {
       final movies = await remoteDataSource.getSearchedMovies(searchTerm);
       return Right(movies);
     } on SocketException {
-      return Left(AppError(AppErrorType.network));
+      return const Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError(AppErrorType.api));
+      return const Left(AppError(AppErrorType.api));
     }
   }
 
@@ -122,7 +123,7 @@ class MovieRepositoryImpl extends MovieRepository {
       final response = await localDataSource.checkIfMovieFavorite(movieId);
       return Right(response);
     } on Exception {
-      return Left(AppError(AppErrorType.database));
+      return const Left(AppError(AppErrorType.database));
     }
   }
 
@@ -132,7 +133,7 @@ class MovieRepositoryImpl extends MovieRepository {
       final response = await localDataSource.deleteMovie(movieId);
       return Right(response);
     } on Exception {
-      return Left(AppError(AppErrorType.database));
+      return const Left(AppError(AppErrorType.database));
     }
   }
 
@@ -142,7 +143,7 @@ class MovieRepositoryImpl extends MovieRepository {
       final response = await localDataSource.getMovies();
       return Right(response);
     } on Exception {
-      return Left(AppError(AppErrorType.database));
+      return const Left(AppError(AppErrorType.database));
     }
   }
 
@@ -150,12 +151,12 @@ class MovieRepositoryImpl extends MovieRepository {
   Future<Either<AppError, void>> saveMovie(MovieEntity movieEntity) async {
     try {
       final table = MovieTable.fromMovieEntity(movieEntity);
-      print(table);
+      debugPrint(table.toString());
       final response = await localDataSource
           .saveMovie(MovieTable.fromMovieEntity(movieEntity));
       return Right(response);
     } on Exception {
-      return Left(AppError(AppErrorType.database));
+      return const Left(AppError(AppErrorType.database));
     }
   }
 }

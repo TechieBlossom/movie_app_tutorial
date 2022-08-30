@@ -10,8 +10,8 @@ class VideoResultModel {
     var videos = List<VideoModel>.empty(growable: true);
     if (json['results'] != null) {
       json['results'].forEach((v) {
-        var _videoModel = VideoModel.fromJson(v);
-        if (_isValidVideo(_videoModel)) {
+        var videoModel = VideoModel.fromJson(v);
+        if (_isValidVideo(videoModel)) {
           videos.add(VideoModel.fromJson(v));
         }
       });
@@ -21,9 +21,9 @@ class VideoResultModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['results'] = this.videos.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['results'] = videos.map((v) => v.toJson()).toList();
     return data;
   }
 }
@@ -31,5 +31,5 @@ class VideoResultModel {
 bool _isValidVideo(VideoModel videoModel) {
   return videoModel.key.isNotEmpty &&
       videoModel.name.isNotEmpty &&
-      videoModel.type.isNotEmpty;
+      videoModel.type!.isNotEmpty;
 }
